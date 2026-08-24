@@ -1,4 +1,4 @@
-# Registro Powerlifting CFBVN
+# Registro Powerlifting CFBN
 
 Aplicación web estática para registrar y consultar:
 
