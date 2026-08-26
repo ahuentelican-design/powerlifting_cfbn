@@ -88,6 +88,12 @@
     .session-block-head{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:12px;align-items:end;margin-bottom:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
     .session-block-name input{font-size:15px;font-weight:900;border-color:color-mix(in srgb,var(--block-color) 55%,var(--line))}
     .session-block-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .session-block-kicker{display:flex;align-items:center;gap:8px;margin-bottom:8px;color:var(--muted);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.09em}
+    .session-block-kicker i{width:10px;height:10px;border-radius:50%;background:var(--block-color);box-shadow:0 0 0 4px color-mix(in srgb,var(--block-color) 18%,transparent)}
+    .session-block-config{display:grid;grid-template-columns:1fr 1.45fr .55fr .8fr .7fr;gap:10px;margin-bottom:13px}
+    .session-block-config .field label{font-size:8px}
+    .session-block.collapsed .session-block-config,.session-block.collapsed .session-exercises{display:none}
+    .session-block.collapsed .session-block-head{margin-bottom:0;padding-bottom:0;border-bottom:0}
     .session-exercises{display:grid;gap:10px}
     .session-row{display:grid;grid-template-columns:1.25fr .7fr .75fr .65fr .75fr .85fr auto;gap:10px;align-items:end;padding:13px;border:1px solid var(--line);border-radius:13px;background:rgba(8,11,16,.52)}
     .session-row .field label{font-size:8px}
@@ -96,14 +102,20 @@
     .session-objective{grid-column:span 2}
     .session-summary{display:grid;gap:7px}
     .session-history-block{padding:7px 9px;border-radius:9px;background:rgba(8,11,16,.48);border-left:3px solid var(--blue)}
-    .session-history-block strong{display:block;color:#fff;font-size:10px;margin-bottom:3px}.session-history-block span{color:var(--muted);font-size:9px}
+    .session-history-block strong{display:block;color:#fff;font-size:10px;margin-bottom:3px}.session-history-block span{color:var(--muted);font-size:9px}.session-history-meta{display:block;margin-bottom:4px;color:#b9c6d5!important}
+    .library-tools{display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;align-items:end;margin-bottom:16px}
+    .template-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .template-card{position:relative;padding:16px;border:1px solid var(--line);border-top:4px solid var(--template-color,var(--blue));border-radius:14px;background:rgba(8,11,16,.48)}
+    .template-card h4{margin:0 0 6px;font-size:13px}.template-card p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}
+    .template-meta{display:flex;gap:6px;flex-wrap:wrap;margin:11px 0}.template-actions{display:flex;gap:8px;flex-wrap:wrap}
+    .template-card .tag{font-size:8px}
     .notice{border-left:4px solid var(--yellow);background:rgba(243,200,63,.07);padding:13px 15px;border-radius:9px;color:#d9d2b0;font-size:10px;line-height:1.5;margin-top:14px}
     .toast{position:fixed;right:22px;bottom:22px;z-index:99;background:#f5f7fa;color:#111722;padding:12px 16px;border-radius:11px;font-size:11px;font-weight:800;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}
     .mobile-title{display:none}
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
-      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.session-objective{grid-column:span 1}
+      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}
       .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc{justify-self:start;width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
     }
   </style>
@@ -192,6 +204,14 @@
 
     <section id="sesion" class="view">
       <article class="card section-card">
+        <div class="card-head"><div><h3>Biblioteca de sesiones</h3><p>Usa una estructura prediseñada o guarda tu planificación actual para repetirla con otros estudiantes.</p></div><span class="tag tag-blue">Plantillas reutilizables</span></div>
+        <div class="library-tools">
+          <div class="field"><label for="template-name">Nombre de la nueva plantilla</label><input id="template-name" maxlength="70" placeholder="Ej. Fuerza semana 1"></div>
+          <button class="btn btn-green" id="template-save" type="button">Guardar planificación actual</button>
+        </div>
+        <div id="session-library" class="template-grid"></div>
+      </article>
+      <article class="card section-card">
         <div class="card-head"><div><h3>Planificar sesión por porcentajes</h3><p>Selecciona ejercicios y utiliza el RM actual para calcular las cargas de trabajo.</p></div><span class="tag tag-green">Guía editable</span></div>
         <div class="form-grid">
           <div class="field"><label for="session-date">Fecha</label><input id="session-date" type="date"></div>
@@ -276,6 +296,27 @@
   ];
   var REP_GUIDE={100:1,95:2,90:3,85:6,80:8,75:10,70:12,65:15,60:18,55:20};
   var REST_GUIDE={100:300,95:300,90:240,85:180,80:150,75:120,70:90,65:90,60:60,55:60};
+  var BLOCK_TYPES=["Calentamiento","Técnica","Fuerza principal","Accesorios","Acondicionamiento","Vuelta a la calma"];
+  var BLOCK_COLORS=[{key:"blue",name:"Azul"},{key:"red",name:"Rojo"},{key:"yellow",name:"Amarillo"},{key:"green",name:"Verde"}];
+  var BUILTIN_TEMPLATES=[
+    {id:"builtin-5x5",name:"Fuerza 5×5",category:"Fuerza",objective:"Desarrollar fuerza general mediante series de cinco repeticiones.",color:"red",blocks:[
+      {name:"Bloque A · Fuerza principal",type:"Fuerza principal",objective:"Priorizar técnica y velocidad estable.",rounds:1,roundRest:180,color:"red",items:[{exercise:"sentadilla",percent:80,reps:5,series:5,rest:180},{exercise:"press-banca",percent:80,reps:5,series:5,rest:180}]},
+      {name:"Bloque B · Tirón",type:"Accesorios",objective:"Completar el trabajo de espalda.",rounds:1,roundRest:120,color:"blue",items:[{exercise:"remo",percent:75,reps:8,series:4,rest:120}]}
+    ]},
+    {id:"builtin-sbd",name:"Técnica SBD",category:"Técnica",objective:"Practicar los tres levantamientos de competencia con cargas moderadas.",color:"blue",blocks:[
+      {name:"Bloque A · Sentadilla",type:"Técnica",objective:"Repeticiones consistentes y profundidad controlada.",rounds:1,roundRest:120,color:"blue",items:[{exercise:"sentadilla",percent:70,reps:3,series:5,rest:120}]},
+      {name:"Bloque B · Banca",type:"Técnica",objective:"Pausa y trayectoria estable.",rounds:1,roundRest:120,color:"yellow",items:[{exercise:"press-banca",percent:70,reps:3,series:5,rest:120}]},
+      {name:"Bloque C · Peso muerto",type:"Técnica",objective:"Salida controlada y posición inicial repetible.",rounds:1,roundRest:150,color:"green",items:[{exercise:"peso-muerto",percent:70,reps:3,series:4,rest:150}]}
+    ]},
+    {id:"builtin-upper",name:"Tren superior",category:"Fuerza e hipertrofia",objective:"Desarrollar empuje y tracción del tren superior.",color:"yellow",blocks:[
+      {name:"Bloque A · Empuje",type:"Fuerza principal",objective:"Trabajo principal de press.",rounds:1,roundRest:150,color:"yellow",items:[{exercise:"press-banca",percent:80,reps:6,series:4,rest:150},{exercise:"press-militar",percent:75,reps:8,series:4,rest:120}]},
+      {name:"Bloque B · Tracción",type:"Accesorios",objective:"Compensar el volumen de empuje.",rounds:1,roundRest:90,color:"blue",items:[{exercise:"remo",percent:75,reps:8,series:4,rest:90}]}
+    ]},
+    {id:"builtin-lower",name:"Tren inferior",category:"Fuerza e hipertrofia",objective:"Desarrollar fuerza de piernas y cadena posterior.",color:"green",blocks:[
+      {name:"Bloque A · Sentadilla",type:"Fuerza principal",objective:"Ejercicio dominante de rodilla.",rounds:1,roundRest:180,color:"red",items:[{exercise:"sentadilla",percent:80,reps:6,series:4,rest:180}]},
+      {name:"Bloque B · Cadena posterior",type:"Accesorios",objective:"Fortalecer extensión de cadera.",rounds:1,roundRest:150,color:"green",items:[{exercise:"peso-muerto",percent:80,reps:5,series:3,rest:180},{exercise:"hip-thrust",percent:75,reps:8,series:4,rest:120}]}
+    ]}
+  ];
   var sessionDraft=[];
   var PAGE_TITLES = {
     "inicio":"Panel general","registros-rm":"Registros de fuerza máxima","matriz-rm":"Matriz general de RM","ficha-rm":"Ficha individual de fuerza",
@@ -287,13 +328,13 @@
         {id:"s1",name:"Estudiante 01",course:""},{id:"s2",name:"Estudiante 02",course:""},
         {id:"s3",name:"Estudiante 03",course:""},{id:"s4",name:"Estudiante 04",course:""},{id:"s5",name:"Estudiante 05",course:""}
       ],
-      rmRecords:[],anthroRecords:[],sessions:[],settings:{epleyDivisor:30}
+      rmRecords:[],anthroRecords:[],sessions:[],sessionTemplates:[],settings:{epleyDivisor:30}
     };
   }
   function loadState(){
     try{
       var parsed=JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if(parsed && Array.isArray(parsed.students) && Array.isArray(parsed.rmRecords) && Array.isArray(parsed.anthroRecords)){if(!Array.isArray(parsed.sessions))parsed.sessions=[];return parsed;}
+      if(parsed && Array.isArray(parsed.students) && Array.isArray(parsed.rmRecords) && Array.isArray(parsed.anthroRecords)){if(!Array.isArray(parsed.sessions))parsed.sessions=[];if(!Array.isArray(parsed.sessionTemplates))parsed.sessionTemplates=[];return parsed;}
     }catch(e){}
     return initialState();
   }
@@ -376,31 +417,69 @@
       return '<tr><td><span class="tag '+(p>=90?"tag-red":p>=75?"tag-blue":p>=60?"tag-yellow":"tag-green")+'">'+p+'%</span></td>'+EXERCISES.map(function(e){var v=bestRM(sid,e.key);return '<td>'+(v?n(v*p/100,1)+" kg":"—")+'</td>';}).join("")+'</tr>';
     }).join("");
   }
-  function sessionRow(){
-    return {id:id("exercise"),exercise:"sentadilla",percent:85,reps:REP_GUIDE[85],series:4,rest:REST_GUIDE[85]};
+  function sessionRow(source){
+    source=source||{};
+    var percent=Number(source.percent)||85;
+    var exercise=EXERCISES.some(function(e){return e.key===source.exercise;})?source.exercise:"sentadilla";
+    return {id:id("exercise"),exercise:exercise,percent:percent,reps:Number(source.reps)||REP_GUIDE[percent]||6,series:Number(source.series)||4,rest:Number(source.rest)||REST_GUIDE[percent]||120};
   }
-  function sessionBlock(name){
-    return {id:id("block"),name:name||("Bloque "+String.fromCharCode(65+sessionDraft.length)),items:[sessionRow()]};
+  function validBlockColor(value){return BLOCK_COLORS.some(function(c){return c.key===value;})?value:"blue";}
+  function sessionBlock(name,source){
+    source=source||{};
+    var items=Array.isArray(source.items)&&source.items.length?source.items.map(function(row){return sessionRow(row);}):[sessionRow()];
+    return {
+      id:id("block"),name:name||source.name||("Bloque "+String.fromCharCode(65+sessionDraft.length)),
+      type:BLOCK_TYPES.indexOf(source.type)>-1?source.type:"Fuerza principal",objective:source.objective||"",
+      rounds:Number(source.rounds)||1,roundRest:(source.roundRest===0||source.roundRest==="0")?0:(Number(source.roundRest)||120),color:validBlockColor(source.color),collapsed:false,items:items
+    };
   }
+  function blockTypeOptions(selected){return BLOCK_TYPES.map(function(type){return '<option'+(type===selected?' selected':'')+'>'+type+'</option>';}).join("");}
+  function blockColorOptions(selected){return BLOCK_COLORS.map(function(color){return '<option value="'+color.key+'"'+(color.key===selected?' selected':'')+'>'+color.name+'</option>';}).join("");}
   function percentOptions(selected){
     return [100,95,90,85,80,75,70,65,60,55].map(function(p){return '<option value="'+p+'"'+(p===Number(selected)?" selected":"")+'>'+p+'%</option>';}).join("");
   }
   function numberOptions(from,to,selected){
     var out="";for(var i=from;i<=to;i++)out+='<option value="'+i+'"'+(i===Number(selected)?" selected":"")+'>'+i+'</option>';return out;
   }
-  function restOptions(selected){
-    return [30,45,60,90,120,150,180,240,300].map(function(v){var min=Math.floor(v/60),sec=String(v%60).padStart(2,"0");return '<option value="'+v+'"'+(v===Number(selected)?" selected":"")+'>'+min+':'+sec+' min</option>';}).join("");
+  function restOptions(selected,includeZero){
+    var values=includeZero?[0,30,45,60,90,120,150,180,240,300]:[30,45,60,90,120,150,180,240,300];
+    return values.map(function(v){var min=Math.floor(v/60),sec=String(v%60).padStart(2,"0");return '<option value="'+v+'"'+(v===Number(selected)?" selected":"")+'>'+(v?min+":"+sec+" min":"Sin pausa")+'</option>';}).join("");
+  }
+  function formatRest(value){var v=Number(value)||0;return v?Math.floor(v/60)+":"+String(v%60).padStart(2,"0")+" min":"sin pausa";}
+  function templateBlocks(blocks){
+    return (blocks||[]).map(function(block,index){return {
+      name:(block.name||("Bloque "+String.fromCharCode(65+index))).trim(),type:block.type||"Fuerza principal",objective:block.objective||"",
+      rounds:Number(block.rounds)||1,roundRest:(block.roundRest===0||block.roundRest==="0")?0:(Number(block.roundRest)||120),color:validBlockColor(block.color),
+      items:(block.items||[]).map(function(row){return {exercise:row.exercise,percent:Number(row.percent),reps:Number(row.reps),series:Number(row.series),rest:Number(row.rest)};})
+    };});
+  }
+  function applyTemplate(template){
+    sessionDraft=templateBlocks(template.blocks).map(function(block){return sessionBlock(block.name,block);});
+    if(!sessionDraft.length)sessionDraft=[sessionBlock("Bloque A")];
+    byId("session-objective").value=template.objective||"";
+    renderSession();toast('Plantilla "'+template.name+'" cargada.');
+  }
+  function allTemplates(){return BUILTIN_TEMPLATES.concat(state.sessionTemplates||[]);}
+  function renderSessionLibrary(){
+    var customIds=(state.sessionTemplates||[]).map(function(t){return t.id;});
+    byId("session-library").innerHTML=allTemplates().map(function(template){
+      var custom=customIds.indexOf(template.id)>-1;
+      var blocks=template.blocks||[],exerciseCount=blocks.reduce(function(sum,block){return sum+(block.items||[]).length;},0);
+      var color=validBlockColor(template.color||(blocks[0]&&blocks[0].color));
+      return '<article class="template-card" style="--template-color:var(--'+color+')"><h4>'+esc(template.name)+'</h4><p>'+esc(template.objective||"Plantilla de entrenamiento")+'</p><div class="template-meta"><span class="tag '+(custom?'tag-green':'tag-blue')+'">'+(custom?'Personalizada':'Incluida')+'</span><span class="tag tag-yellow">'+blocks.length+' bloques</span><span class="tag tag-red">'+exerciseCount+' ejercicios</span></div><div class="template-actions"><button class="btn btn-blue" data-template-use="'+template.id+'" type="button">Usar plantilla</button>'+(custom?'<button class="btn btn-danger" data-template-delete="'+template.id+'" type="button">Eliminar</button>':'')+'</div></article>';
+    }).join("");
   }
   function renderSession(){
     if(!sessionDraft.length)sessionDraft=[sessionBlock("Bloque A")];
     var sid=byId("session-student").value;
     if(!sid&&state.students[0]){sid=state.students[0].id;byId("session-student").value=sid;}
     byId("session-rows").innerHTML=sessionDraft.map(function(block,blockIndex){
+      block.type=BLOCK_TYPES.indexOf(block.type)>-1?block.type:"Fuerza principal";block.objective=block.objective||"";block.rounds=Number(block.rounds)||1;block.roundRest=(block.roundRest===0||block.roundRest==="0")?0:(Number(block.roundRest)||120);block.color=validBlockColor(block.color);
       var exercises=block.items.map(function(row,rowIndex){
         var rm=bestRM(sid,row.exercise),load=Math.round(rm*row.percent/100*2)/2;
         return '<div class="session-row" data-session-row="'+row.id+'"><div class="field"><label>Ejercicio '+(rowIndex+1)+'</label><select data-session-field="exercise">'+EXERCISES.map(function(e){return '<option value="'+e.key+'"'+(e.key===row.exercise?" selected":"")+'>'+e.name+'</option>';}).join("")+'</select></div><div class="field"><label>Porcentaje</label><select data-session-field="percent">'+percentOptions(row.percent)+'</select></div><div class="load-box"><div><b>'+(rm?n(load,1)+" kg":"Sin RM")+'</b><small>'+(rm?"RM actual: "+n(rm,1)+" kg":"Registra primero un RM")+'</small></div></div><div class="field"><label>Repeticiones</label><select data-session-field="reps">'+numberOptions(1,20,row.reps)+'</select></div><div class="field"><label>Series</label><select data-session-field="series">'+numberOptions(1,10,row.series)+'</select></div><div class="field"><label>Descanso</label><select data-session-field="rest">'+restOptions(row.rest)+'</select></div><button class="small-btn" data-remove-session-row="'+row.id+'" type="button">Quitar</button></div>';
       }).join("");
-      return '<div class="session-block" data-session-block="'+block.id+'"><div class="session-block-head"><div class="field session-block-name"><label>Nombre de la sección</label><input data-block-name value="'+esc(block.name)+'" maxlength="60" placeholder="Ej. Bloque A o Fuerza principal"></div><div class="session-block-actions"><button class="btn btn-ghost" data-add-block-exercise="'+block.id+'" type="button">Agregar ejercicio</button><button class="btn btn-danger" data-remove-session-block="'+block.id+'" type="button">Eliminar bloque</button></div></div><div class="session-exercises">'+exercises+'</div></div>';
+      return '<div class="session-block'+(block.collapsed?' collapsed':'')+'" data-session-block="'+block.id+'" style="--block-color:var(--'+block.color+')"><div class="session-block-head"><div><div class="session-block-kicker"><i></i>Sección '+(blockIndex+1)+' · '+esc(block.type)+'</div><div class="field session-block-name"><label>Nombre de la sección</label><input data-block-field="name" value="'+esc(block.name)+'" maxlength="60" placeholder="Ej. Bloque A o Fuerza principal"></div></div><div class="session-block-actions"><button class="btn btn-ghost" data-move-block="up" type="button"'+(blockIndex===0?' disabled':'')+'>Subir</button><button class="btn btn-ghost" data-move-block="down" type="button"'+(blockIndex===sessionDraft.length-1?' disabled':'')+'>Bajar</button><button class="btn btn-ghost" data-duplicate-block="'+block.id+'" type="button">Duplicar</button><button class="btn btn-ghost" data-toggle-block="'+block.id+'" type="button">'+(block.collapsed?'Expandir':'Contraer')+'</button><button class="btn btn-danger" data-remove-session-block="'+block.id+'" type="button">Eliminar</button></div></div><div class="session-block-config"><div class="field"><label>Tipo de bloque</label><select data-block-field="type">'+blockTypeOptions(block.type)+'</select></div><div class="field"><label>Objetivo del bloque</label><input data-block-field="objective" value="'+esc(block.objective)+'" maxlength="120" placeholder="Propósito de esta sección"></div><div class="field"><label>Rondas</label><select data-block-field="rounds">'+numberOptions(1,10,block.rounds)+'</select></div><div class="field"><label>Descanso entre rondas</label><select data-block-field="roundRest">'+restOptions(block.roundRest,true)+'</select></div><div class="field"><label>Color</label><select data-block-field="color">'+blockColorOptions(block.color)+'</select></div></div><div class="session-exercises">'+exercises+'<div><button class="btn btn-ghost" data-add-block-exercise="'+block.id+'" type="button">Agregar ejercicio al bloque</button></div></div></div>';
     }).join("");
     renderSessionHistory();
   }
@@ -416,7 +495,9 @@
       var volume=allItems.reduce(function(sum,item){return sum+(Number(item.load)||0)*(Number(item.reps)||0)*(Number(item.series)||0);},0);
       var detail=blocks.map(function(block){
         var items=(block.items||[]).map(function(item){return exerciseName(item.exercise)+" "+item.percent+"% · "+item.series+"×"+item.reps;}).join(" | ");
-        return '<div class="session-history-block"><strong>'+esc(block.name||"Bloque")+'</strong><span>'+esc(items||"Sin ejercicios")+'</span></div>';
+        var savedRoundRest=block.roundRest==null?120:Number(block.roundRest);
+        var meta=(block.type||"Bloque")+' · '+(Number(block.rounds)||1)+' ronda'+((Number(block.rounds)||1)===1?'':'s')+' · descanso '+formatRest(savedRoundRest);
+        return '<div class="session-history-block" style="border-left-color:var(--'+validBlockColor(block.color)+')"><strong>'+esc(block.name||"Bloque")+'</strong><span class="session-history-meta">'+esc(meta)+(block.objective?' · '+esc(block.objective):'')+'</span><span>'+esc(items||"Sin ejercicios")+'</span></div>';
       }).join("");
       return '<tr><td>'+dateLabel(s.date)+'</td><td><strong>'+esc(studentName(s.studentId))+'</strong></td><td>'+esc(s.objective||"—")+'</td><td><div class="session-summary">'+detail+'</div></td><td><span class="tag tag-green">'+n(volume,0)+' kg</span></td><td><button class="small-btn" data-delete-session="'+s.id+'">Eliminar</button></td></tr>';
     }).join(""):'<tr><td colspan="6"><div class="empty">Todavía no hay sesiones guardadas.</div></td></tr>';
@@ -448,7 +529,7 @@
       return '<div class="student-row"><div><div class="student-name">'+esc(s.name)+'</div><div class="student-meta">'+esc(s.course||"Sin curso")+' · '+count+' registros</div></div><button class="small-btn" data-delete-student="'+s.id+'">Eliminar</button></div>';
     }).join(""):'<div class="empty">No hay estudiantes.</div>';
   }
-  function renderAll(){refreshSelects();renderDashboard();renderRM();renderMatrix();renderProfile();renderSession();renderAnthro();renderAnthroProfile();renderStudents();}
+  function renderAll(){refreshSelects();renderDashboard();renderRM();renderMatrix();renderProfile();renderSessionLibrary();renderSession();renderAnthro();renderAnthroProfile();renderStudents();}
 
   byId("rm-form").addEventListener("submit",function(e){
     e.preventDefault();if(!state.students.length){toast("Primero agrega un estudiante.");return;}
@@ -462,12 +543,19 @@
   byId("session-add").addEventListener("click",function(){sessionDraft.push(sessionBlock());renderSession();});
   byId("session-clear").addEventListener("click",function(){sessionDraft=[sessionBlock("Bloque A")];byId("session-objective").value="";renderSession();toast("Planificación limpiada.");});
   byId("session-rows").addEventListener("input",function(e){
-    if(!e.target.matches("[data-block-name]"))return;
+    var field=e.target.dataset.blockField;if(field!=="name"&&field!=="objective")return;
     var blockWrap=e.target.closest("[data-session-block]");
     var block=sessionDraft.find(function(x){return x.id===blockWrap.dataset.sessionBlock;});
-    if(block)block.name=e.target.value;
+    if(block)block[field]=e.target.value;
   });
   byId("session-rows").addEventListener("change",function(e){
+    var blockField=e.target.dataset.blockField;
+    if(blockField){
+      var configWrap=e.target.closest("[data-session-block]");
+      var configBlock=sessionDraft.find(function(x){return x.id===configWrap.dataset.sessionBlock;});if(!configBlock)return;
+      configBlock[blockField]=(blockField==="rounds"||blockField==="roundRest")?Number(e.target.value):e.target.value;
+      if(blockField!=="name"&&blockField!=="objective")renderSession();return;
+    }
     var field=e.target.dataset.sessionField;if(!field)return;
     var blockWrap=e.target.closest("[data-session-block]"),rowWrap=e.target.closest("[data-session-row]");
     var block=sessionDraft.find(function(x){return x.id===blockWrap.dataset.sessionBlock;});
@@ -477,6 +565,15 @@
     renderSession();
   });
   byId("session-rows").addEventListener("click",function(e){
+    var blockWrap=e.target.closest("[data-session-block]");
+    var blockId=blockWrap&&blockWrap.dataset.sessionBlock;
+    var blockIndex=sessionDraft.findIndex(function(block){return block.id===blockId;});
+    var move=e.target.dataset.moveBlock;
+    if(move&&blockIndex>-1){var targetIndex=move==="up"?blockIndex-1:blockIndex+1;if(targetIndex>=0&&targetIndex<sessionDraft.length){var moved=sessionDraft.splice(blockIndex,1)[0];sessionDraft.splice(targetIndex,0,moved);renderSession();}return;}
+    var duplicateId=e.target.dataset.duplicateBlock;
+    if(duplicateId){var duplicateIndex=sessionDraft.findIndex(function(block){return block.id===duplicateId;});if(duplicateIndex>-1){var original=sessionDraft[duplicateIndex];var copy=sessionBlock(original.name+" · copia",original);sessionDraft.splice(duplicateIndex+1,0,copy);renderSession();toast("Bloque duplicado.");}return;}
+    var toggleId=e.target.dataset.toggleBlock;
+    if(toggleId){var toggleBlock=sessionDraft.find(function(block){return block.id===toggleId;});if(toggleBlock){toggleBlock.collapsed=!toggleBlock.collapsed;renderSession();}return;}
     var addId=e.target.dataset.addBlockExercise;
     if(addId){var addBlock=sessionDraft.find(function(x){return x.id===addId;});if(addBlock){addBlock.items.push(sessionRow());renderSession();}return;}
     var removeRowId=e.target.dataset.removeSessionRow;
@@ -498,11 +595,24 @@
     if(missing){toast("Uno de los ejercicios no tiene un RM registrado.");return;}
     var blocks=sessionDraft.map(function(block,index){
       var items=block.items.map(function(row){var rm=bestRM(sid,row.exercise);return {exercise:row.exercise,percent:row.percent,rm:rm,load:Math.round(rm*row.percent/100*2)/2,reps:row.reps,series:row.series,rest:row.rest};});
-      return {name:block.name.trim()||("Bloque "+String.fromCharCode(65+index)),items:items};
+      return {name:block.name.trim()||("Bloque "+String.fromCharCode(65+index)),type:block.type,objective:block.objective.trim(),rounds:Number(block.rounds)||1,roundRest:Number(block.roundRest)||0,color:validBlockColor(block.color),items:items};
     });
     var items=blocks.reduce(function(list,block){return list.concat(block.items);},[]);
     state.sessions.push({id:id("session"),date:byId("session-date").value||today(),studentId:sid,objective:byId("session-objective").value.trim(),blocks:blocks,items:items,createdAt:new Date().toISOString()});
     save();sessionDraft=[sessionBlock("Bloque A")];byId("session-objective").value="";renderAll();toast("Sesión guardada por bloques.");
+  });
+  byId("template-save").addEventListener("click",function(){
+    var name=byId("template-name").value.trim();if(!name){toast("Escribe un nombre para la plantilla.");return;}
+    if(!sessionDraft.length){toast("Agrega al menos un bloque.");return;}
+    var blocks=templateBlocks(sessionDraft);
+    state.sessionTemplates.push({id:id("template"),name:name,category:"Personalizada",objective:byId("session-objective").value.trim(),color:validBlockColor(blocks[0]&&blocks[0].color),blocks:blocks,createdAt:new Date().toISOString()});
+    save();byId("template-name").value="";renderSessionLibrary();toast("Plantilla guardada en la biblioteca.");
+  });
+  byId("session-library").addEventListener("click",function(e){
+    var useId=e.target.dataset.templateUse;
+    if(useId){var template=allTemplates().find(function(t){return t.id===useId;});if(template)applyTemplate(template);return;}
+    var deleteId=e.target.dataset.templateDelete;
+    if(deleteId&&confirm("¿Eliminar esta plantilla personalizada?")){state.sessionTemplates=state.sessionTemplates.filter(function(t){return t.id!==deleteId;});save();renderSessionLibrary();toast("Plantilla eliminada.");}
   });
   byId("anthro-form").addEventListener("submit",function(e){
     e.preventDefault();if(!state.students.length){toast("Primero agrega un estudiante.");return;}
@@ -542,7 +652,7 @@
   byId("export-json").addEventListener("click",function(){download("Respaldo_Powerlifting_"+today()+".json",JSON.stringify(state,null,2),"application/json");toast("Respaldo descargado.");});
   byId("import-json").addEventListener("change",function(e){
     var file=e.target.files[0];if(!file)return;var reader=new FileReader();
-    reader.onload=function(){try{var data=JSON.parse(reader.result);if(!Array.isArray(data.students)||!Array.isArray(data.rmRecords)||!Array.isArray(data.anthroRecords))throw new Error("Formato inválido");if(!Array.isArray(data.sessions))data.sessions=[];if(confirm("El respaldo reemplazará los datos actuales. ¿Continuar?")){state=data;save();renderAll();toast("Respaldo importado.");}}catch(err){toast("No fue posible leer el respaldo.");}e.target.value="";};reader.readAsText(file);
+    reader.onload=function(){try{var data=JSON.parse(reader.result);if(!Array.isArray(data.students)||!Array.isArray(data.rmRecords)||!Array.isArray(data.anthroRecords))throw new Error("Formato inválido");if(!Array.isArray(data.sessions))data.sessions=[];if(!Array.isArray(data.sessionTemplates))data.sessionTemplates=[];if(confirm("El respaldo reemplazará los datos actuales. ¿Continuar?")){state=data;save();renderAll();toast("Respaldo importado.");}}catch(err){toast("No fue posible leer el respaldo.");}e.target.value="";};reader.readAsText(file);
   });
   byId("reset-data").addEventListener("click",function(){if(confirm("¿Restablecer todos los datos? Esta acción no se puede deshacer sin un respaldo.")){state=initialState();save();renderAll();toast("Datos restablecidos.");}});
   byId("rm-type").addEventListener("change",function(){if(this.value==="direct")byId("rm-reps").value=1;});
