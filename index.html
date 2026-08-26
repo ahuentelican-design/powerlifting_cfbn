@@ -82,20 +82,28 @@
     .latest-list{display:grid;gap:8px}.latest-item{display:grid;grid-template-columns:90px 1fr auto;gap:10px;align-items:center;padding:11px;border-radius:11px;background:rgba(8,11,16,.44);border:1px solid var(--line);font-size:10px}.latest-item strong{font-size:11px}
     .student-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px;border-bottom:1px solid var(--line)}.student-row:last-child{border-bottom:0}.student-name{font-weight:800;font-size:12px}.student-meta{color:var(--muted);font-size:9px;margin-top:4px}
     .small-btn{border:1px solid var(--line);background:transparent;color:#ff8795;border-radius:8px;padding:6px 8px;font-size:9px;font-weight:800}
-    .session-rows{display:grid;gap:12px}
-    .session-row{display:grid;grid-template-columns:1.25fr .7fr .75fr .65fr .75fr .85fr auto;gap:10px;align-items:end;padding:15px;border:1px solid var(--line);border-radius:14px;background:rgba(8,11,16,.42)}
+    .session-rows{display:grid;gap:16px}
+    .session-block{padding:16px;border:1px solid var(--line);border-left:5px solid var(--block-color,var(--blue));border-radius:16px;background:linear-gradient(145deg,rgba(25,33,45,.82),rgba(10,14,20,.78))}
+    .session-block:nth-child(4n+1){--block-color:var(--blue)}.session-block:nth-child(4n+2){--block-color:var(--red)}.session-block:nth-child(4n+3){--block-color:var(--yellow)}.session-block:nth-child(4n){--block-color:var(--green)}
+    .session-block-head{display:grid;grid-template-columns:minmax(220px,1fr) auto;gap:12px;align-items:end;margin-bottom:13px;padding-bottom:13px;border-bottom:1px solid var(--line)}
+    .session-block-name input{font-size:15px;font-weight:900;border-color:color-mix(in srgb,var(--block-color) 55%,var(--line))}
+    .session-block-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}
+    .session-exercises{display:grid;gap:10px}
+    .session-row{display:grid;grid-template-columns:1.25fr .7fr .75fr .65fr .75fr .85fr auto;gap:10px;align-items:end;padding:13px;border:1px solid var(--line);border-radius:13px;background:rgba(8,11,16,.52)}
     .session-row .field label{font-size:8px}
     .load-box{min-height:42px;display:flex;align-items:center;padding:9px 11px;border-radius:11px;background:linear-gradient(135deg,rgba(40,112,217,.18),rgba(217,45,63,.12));border:1px solid rgba(40,112,217,.35)}
     .load-box b{font-size:16px}.load-box small{display:block;color:var(--muted);font-size:8px;margin-top:2px}
     .session-objective{grid-column:span 2}
-    .session-summary{display:flex;gap:7px;flex-wrap:wrap}
+    .session-summary{display:grid;gap:7px}
+    .session-history-block{padding:7px 9px;border-radius:9px;background:rgba(8,11,16,.48);border-left:3px solid var(--blue)}
+    .session-history-block strong{display:block;color:#fff;font-size:10px;margin-bottom:3px}.session-history-block span{color:var(--muted);font-size:9px}
     .notice{border-left:4px solid var(--yellow);background:rgba(243,200,63,.07);padding:13px 15px;border-radius:9px;color:#d9d2b0;font-size:10px;line-height:1.5;margin-top:14px}
     .toast{position:fixed;right:22px;bottom:22px;z-index:99;background:#f5f7fa;color:#111722;padding:12px 16px;border-radius:11px;font-size:11px;font-weight:800;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}
     .mobile-title{display:none}
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
-      .session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.session-objective{grid-column:span 1}
+      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.session-objective{grid-column:span 1}
       .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc{justify-self:start;width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
     }
   </style>
@@ -192,7 +200,7 @@
         </div>
         <div class="notice">Las repeticiones y los descansos son orientativos. Puedes modificarlos según la experiencia del estudiante, la técnica, el RPE/RIR y el objetivo de la sesión.</div>
         <div id="session-rows" class="session-rows" style="margin-top:16px"></div>
-        <div class="actions"><button class="btn btn-ghost" id="session-add" type="button">Agregar ejercicio</button><button class="btn btn-primary" id="session-save" type="button">Guardar sesión</button><button class="btn btn-danger" id="session-clear" type="button">Limpiar</button></div>
+        <div class="actions"><button class="btn btn-ghost" id="session-add" type="button">Agregar bloque</button><button class="btn btn-primary" id="session-save" type="button">Guardar sesión</button><button class="btn btn-danger" id="session-clear" type="button">Limpiar</button></div>
       </article>
       <article class="card section-card">
         <div class="card-head"><div><h3>Sesiones guardadas</h3><p>Historial de planificaciones por estudiante.</p></div></div>
@@ -371,6 +379,9 @@
   function sessionRow(){
     return {id:id("exercise"),exercise:"sentadilla",percent:85,reps:REP_GUIDE[85],series:4,rest:REST_GUIDE[85]};
   }
+  function sessionBlock(name){
+    return {id:id("block"),name:name||("Bloque "+String.fromCharCode(65+sessionDraft.length)),items:[sessionRow()]};
+  }
   function percentOptions(selected){
     return [100,95,90,85,80,75,70,65,60,55].map(function(p){return '<option value="'+p+'"'+(p===Number(selected)?" selected":"")+'>'+p+'%</option>';}).join("");
   }
@@ -381,21 +392,33 @@
     return [30,45,60,90,120,150,180,240,300].map(function(v){var min=Math.floor(v/60),sec=String(v%60).padStart(2,"0");return '<option value="'+v+'"'+(v===Number(selected)?" selected":"")+'>'+min+':'+sec+' min</option>';}).join("");
   }
   function renderSession(){
-    if(!sessionDraft.length)sessionDraft=[sessionRow()];
+    if(!sessionDraft.length)sessionDraft=[sessionBlock("Bloque A")];
     var sid=byId("session-student").value;
     if(!sid&&state.students[0]){sid=state.students[0].id;byId("session-student").value=sid;}
-    byId("session-rows").innerHTML=sessionDraft.map(function(row,index){
-      var rm=bestRM(sid,row.exercise),load=Math.round(rm*row.percent/100*2)/2;
-      return '<div class="session-row" data-session-row="'+row.id+'"><div class="field"><label>Ejercicio '+(index+1)+'</label><select data-session-field="exercise">'+EXERCISES.map(function(e){return '<option value="'+e.key+'"'+(e.key===row.exercise?" selected":"")+'>'+e.name+'</option>';}).join("")+'</select></div><div class="field"><label>Porcentaje</label><select data-session-field="percent">'+percentOptions(row.percent)+'</select></div><div class="load-box"><div><b>'+(rm?n(load,1)+" kg":"Sin RM")+'</b><small>'+(rm?"RM actual: "+n(rm,1)+" kg":"Registra primero un RM")+'</small></div></div><div class="field"><label>Repeticiones</label><select data-session-field="reps">'+numberOptions(1,20,row.reps)+'</select></div><div class="field"><label>Series</label><select data-session-field="series">'+numberOptions(1,10,row.series)+'</select></div><div class="field"><label>Descanso</label><select data-session-field="rest">'+restOptions(row.rest)+'</select></div><button class="small-btn" data-remove-session-row="'+row.id+'" type="button">Quitar</button></div>';
+    byId("session-rows").innerHTML=sessionDraft.map(function(block,blockIndex){
+      var exercises=block.items.map(function(row,rowIndex){
+        var rm=bestRM(sid,row.exercise),load=Math.round(rm*row.percent/100*2)/2;
+        return '<div class="session-row" data-session-row="'+row.id+'"><div class="field"><label>Ejercicio '+(rowIndex+1)+'</label><select data-session-field="exercise">'+EXERCISES.map(function(e){return '<option value="'+e.key+'"'+(e.key===row.exercise?" selected":"")+'>'+e.name+'</option>';}).join("")+'</select></div><div class="field"><label>Porcentaje</label><select data-session-field="percent">'+percentOptions(row.percent)+'</select></div><div class="load-box"><div><b>'+(rm?n(load,1)+" kg":"Sin RM")+'</b><small>'+(rm?"RM actual: "+n(rm,1)+" kg":"Registra primero un RM")+'</small></div></div><div class="field"><label>Repeticiones</label><select data-session-field="reps">'+numberOptions(1,20,row.reps)+'</select></div><div class="field"><label>Series</label><select data-session-field="series">'+numberOptions(1,10,row.series)+'</select></div><div class="field"><label>Descanso</label><select data-session-field="rest">'+restOptions(row.rest)+'</select></div><button class="small-btn" data-remove-session-row="'+row.id+'" type="button">Quitar</button></div>';
+      }).join("");
+      return '<div class="session-block" data-session-block="'+block.id+'"><div class="session-block-head"><div class="field session-block-name"><label>Nombre de la sección</label><input data-block-name value="'+esc(block.name)+'" maxlength="60" placeholder="Ej. Bloque A o Fuerza principal"></div><div class="session-block-actions"><button class="btn btn-ghost" data-add-block-exercise="'+block.id+'" type="button">Agregar ejercicio</button><button class="btn btn-danger" data-remove-session-block="'+block.id+'" type="button">Eliminar bloque</button></div></div><div class="session-exercises">'+exercises+'</div></div>';
     }).join("");
     renderSessionHistory();
+  }
+  function sessionBlocks(savedSession){
+    if(Array.isArray(savedSession.blocks)&&savedSession.blocks.length)return savedSession.blocks;
+    return [{name:"Bloque principal",items:Array.isArray(savedSession.items)?savedSession.items:[]}];
   }
   function renderSessionHistory(){
     var rows=latestByDate(state.sessions||[]);
     byId("session-history-body").innerHTML=rows.length?rows.map(function(s){
-      var volume=s.items.reduce(function(sum,item){return sum+(Number(item.load)||0)*(Number(item.reps)||0)*(Number(item.series)||0);},0);
-      var detail=s.items.map(function(item){return exerciseName(item.exercise)+" "+item.percent+"% · "+item.series+"×"+item.reps;}).join(" | ");
-      return '<tr><td>'+dateLabel(s.date)+'</td><td><strong>'+esc(studentName(s.studentId))+'</strong></td><td>'+esc(s.objective||"—")+'</td><td><div class="session-summary">'+esc(detail)+'</div></td><td><span class="tag tag-green">'+n(volume,0)+' kg</span></td><td><button class="small-btn" data-delete-session="'+s.id+'">Eliminar</button></td></tr>';
+      var blocks=sessionBlocks(s);
+      var allItems=blocks.reduce(function(list,block){return list.concat(block.items||[]);},[]);
+      var volume=allItems.reduce(function(sum,item){return sum+(Number(item.load)||0)*(Number(item.reps)||0)*(Number(item.series)||0);},0);
+      var detail=blocks.map(function(block){
+        var items=(block.items||[]).map(function(item){return exerciseName(item.exercise)+" "+item.percent+"% · "+item.series+"×"+item.reps;}).join(" | ");
+        return '<div class="session-history-block"><strong>'+esc(block.name||"Bloque")+'</strong><span>'+esc(items||"Sin ejercicios")+'</span></div>';
+      }).join("");
+      return '<tr><td>'+dateLabel(s.date)+'</td><td><strong>'+esc(studentName(s.studentId))+'</strong></td><td>'+esc(s.objective||"—")+'</td><td><div class="session-summary">'+detail+'</div></td><td><span class="tag tag-green">'+n(volume,0)+' kg</span></td><td><button class="small-btn" data-delete-session="'+s.id+'">Eliminar</button></td></tr>';
     }).join(""):'<tr><td colspan="6"><div class="empty">Todavía no hay sesiones guardadas.</div></td></tr>';
   }
   function renderAnthro(){
@@ -435,27 +458,51 @@
     save();byId("rm-load").value="";byId("rm-notes").value="";renderAll();toast("Prueba de RM guardada.");
   });
   byId("session-student").addEventListener("change",renderSession);
-  byId("open-session").addEventListener("click",function(){byId("session-student").value=byId("profile-student").value;sessionDraft=[sessionRow()];showView("sesion");});
-  byId("session-add").addEventListener("click",function(){sessionDraft.push(sessionRow());renderSession();});
-  byId("session-clear").addEventListener("click",function(){sessionDraft=[sessionRow()];byId("session-objective").value="";renderSession();toast("Planificación limpiada.");});
+  byId("open-session").addEventListener("click",function(){byId("session-student").value=byId("profile-student").value;sessionDraft=[sessionBlock("Bloque A")];showView("sesion");});
+  byId("session-add").addEventListener("click",function(){sessionDraft.push(sessionBlock());renderSession();});
+  byId("session-clear").addEventListener("click",function(){sessionDraft=[sessionBlock("Bloque A")];byId("session-objective").value="";renderSession();toast("Planificación limpiada.");});
+  byId("session-rows").addEventListener("input",function(e){
+    if(!e.target.matches("[data-block-name]"))return;
+    var blockWrap=e.target.closest("[data-session-block]");
+    var block=sessionDraft.find(function(x){return x.id===blockWrap.dataset.sessionBlock;});
+    if(block)block.name=e.target.value;
+  });
   byId("session-rows").addEventListener("change",function(e){
-    var field=e.target.dataset.sessionField;if(!field)return;var wrap=e.target.closest("[data-session-row]");var row=sessionDraft.find(function(x){return x.id===wrap.dataset.sessionRow;});if(!row)return;
+    var field=e.target.dataset.sessionField;if(!field)return;
+    var blockWrap=e.target.closest("[data-session-block]"),rowWrap=e.target.closest("[data-session-row]");
+    var block=sessionDraft.find(function(x){return x.id===blockWrap.dataset.sessionBlock;});
+    var row=block&&block.items.find(function(x){return x.id===rowWrap.dataset.sessionRow;});if(!row)return;
     row[field]=(field==="exercise")?e.target.value:Number(e.target.value);
     if(field==="percent"){row.reps=REP_GUIDE[row.percent];row.rest=REST_GUIDE[row.percent];}
     renderSession();
   });
   byId("session-rows").addEventListener("click",function(e){
-    if(!e.target.dataset.removeSessionRow)return;
-    if(sessionDraft.length===1){toast("La sesión debe conservar al menos un ejercicio.");return;}
-    sessionDraft=sessionDraft.filter(function(x){return x.id!==e.target.dataset.removeSessionRow;});renderSession();
+    var addId=e.target.dataset.addBlockExercise;
+    if(addId){var addBlock=sessionDraft.find(function(x){return x.id===addId;});if(addBlock){addBlock.items.push(sessionRow());renderSession();}return;}
+    var removeRowId=e.target.dataset.removeSessionRow;
+    if(removeRowId){
+      var rowBlock=sessionDraft.find(function(block){return block.items.some(function(row){return row.id===removeRowId;});});
+      if(!rowBlock)return;
+      if(rowBlock.items.length===1){toast("Cada bloque debe conservar al menos un ejercicio.");return;}
+      rowBlock.items=rowBlock.items.filter(function(row){return row.id!==removeRowId;});renderSession();return;
+    }
+    var removeBlockId=e.target.dataset.removeSessionBlock;
+    if(removeBlockId){
+      if(sessionDraft.length===1){toast("La sesión debe conservar al menos un bloque.");return;}
+      sessionDraft=sessionDraft.filter(function(block){return block.id!==removeBlockId;});renderSession();
+    }
   });
   byId("session-save").addEventListener("click",function(){
     var sid=byId("session-student").value;if(!sid){toast("Selecciona un estudiante.");return;}
-    var missing=sessionDraft.some(function(row){return !bestRM(sid,row.exercise);});
+    var missing=sessionDraft.some(function(block){return block.items.some(function(row){return !bestRM(sid,row.exercise);});});
     if(missing){toast("Uno de los ejercicios no tiene un RM registrado.");return;}
-    var items=sessionDraft.map(function(row){var rm=bestRM(sid,row.exercise);return {exercise:row.exercise,percent:row.percent,rm:rm,load:Math.round(rm*row.percent/100*2)/2,reps:row.reps,series:row.series,rest:row.rest};});
-    state.sessions.push({id:id("session"),date:byId("session-date").value||today(),studentId:sid,objective:byId("session-objective").value.trim(),items:items,createdAt:new Date().toISOString()});
-    save();sessionDraft=[sessionRow()];byId("session-objective").value="";renderAll();toast("Sesión guardada.");
+    var blocks=sessionDraft.map(function(block,index){
+      var items=block.items.map(function(row){var rm=bestRM(sid,row.exercise);return {exercise:row.exercise,percent:row.percent,rm:rm,load:Math.round(rm*row.percent/100*2)/2,reps:row.reps,series:row.series,rest:row.rest};});
+      return {name:block.name.trim()||("Bloque "+String.fromCharCode(65+index)),items:items};
+    });
+    var items=blocks.reduce(function(list,block){return list.concat(block.items);},[]);
+    state.sessions.push({id:id("session"),date:byId("session-date").value||today(),studentId:sid,objective:byId("session-objective").value.trim(),blocks:blocks,items:items,createdAt:new Date().toISOString()});
+    save();sessionDraft=[sessionBlock("Bloque A")];byId("session-objective").value="";renderAll();toast("Sesión guardada por bloques.");
   });
   byId("anthro-form").addEventListener("submit",function(e){
     e.preventDefault();if(!state.students.length){toast("Primero agrega un estudiante.");return;}
