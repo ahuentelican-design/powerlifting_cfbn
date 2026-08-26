@@ -116,6 +116,8 @@
     .session-history-block strong{display:block;color:#fff;font-size:10px;margin-bottom:3px}.session-history-block span{color:var(--muted);font-size:9px}.session-history-meta{display:block;margin-bottom:4px;color:#b9c6d5!important}
     .library-tools{display:grid;grid-template-columns:minmax(180px,1fr) auto;gap:10px;align-items:end;margin-bottom:16px}
     .template-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+    .library-head-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}.session-library-content{transition:.2s}.session-library-card.collapsed .session-library-content{display:none}.session-library-card.collapsed .card-head{margin-bottom:0}
+    .session-library-card .template-grid{max-height:620px;overflow-y:auto;padding-right:5px;scrollbar-color:var(--blue) #0c1118;scrollbar-width:thin}
     .template-card{position:relative;padding:16px;border:1px solid var(--line);border-top:4px solid var(--template-color,var(--blue));border-radius:14px;background:rgba(8,11,16,.48)}
     .template-card h4{margin:0 0 6px;font-size:13px}.template-card p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}
     .template-meta{display:flex;gap:6px;flex-wrap:wrap;margin:11px 0}.template-actions{display:flex;gap:8px;flex-wrap:wrap}
@@ -144,7 +146,7 @@
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
-      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
+      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.library-head-actions{justify-content:flex-start}.session-library-card .template-grid{max-height:520px}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
       .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc{justify-self:start;width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
     }
     @media print{
@@ -236,13 +238,15 @@
     </section>
 
     <section id="sesion" class="view">
-      <article class="card section-card">
-        <div class="card-head"><div><h3>Biblioteca de sesiones</h3><p>Usa una estructura prediseñada o guarda tu planificación actual para repetirla con otros estudiantes.</p></div><span class="tag tag-blue">Plantillas reutilizables</span></div>
-        <div class="library-tools">
-          <div class="field"><label for="template-name">Nombre de la nueva plantilla</label><input id="template-name" maxlength="70" placeholder="Ej. Fuerza semana 1"></div>
-          <button class="btn btn-green" id="template-save" type="button">Guardar planificación actual</button>
+      <article class="card section-card session-library-card" id="session-library-card">
+        <div class="card-head"><div><h3>Biblioteca de sesiones</h3><p>Usa una estructura prediseñada o guarda tu planificación actual para repetirla con otros estudiantes.</p></div><div class="library-head-actions"><span class="tag tag-blue" id="library-count">0 plantillas</span><button class="btn btn-ghost" id="library-toggle" type="button" aria-controls="session-library-content" aria-expanded="true">Contraer biblioteca</button></div></div>
+        <div class="session-library-content" id="session-library-content">
+          <div class="library-tools">
+            <div class="field"><label for="template-name">Nombre de la nueva plantilla</label><input id="template-name" maxlength="70" placeholder="Ej. Fuerza semana 1"></div>
+            <button class="btn btn-green" id="template-save" type="button">Guardar planificación actual</button>
+          </div>
+          <div id="session-library" class="template-grid"></div>
         </div>
-        <div id="session-library" class="template-grid"></div>
       </article>
       <article class="card section-card">
         <div class="card-head"><div><h3>Planificar sesión por porcentajes</h3><p>Selecciona ejercicios y utiliza el RM actual para calcular las cargas de trabajo.</p></div><span class="tag tag-green">Guía editable</span></div>
@@ -539,13 +543,19 @@
   }
   function allTemplates(){return BUILTIN_TEMPLATES.concat(state.sessionTemplates||[]);}
   function renderSessionLibrary(){
+    if(!state.settings||typeof state.settings!=="object")state.settings={epleyDivisor:30};
+    var templates=allTemplates(),collapsed=!!state.settings.libraryCollapsed;
     var customIds=(state.sessionTemplates||[]).map(function(t){return t.id;});
-    byId("session-library").innerHTML=allTemplates().map(function(template){
+    byId("session-library").innerHTML=templates.map(function(template){
       var custom=customIds.indexOf(template.id)>-1;
       var blocks=template.blocks||[],exerciseCount=blocks.reduce(function(sum,block){return sum+(block.items||[]).length;},0);
       var color=validBlockColor(template.color||(blocks[0]&&blocks[0].color));
       return '<article class="template-card" style="--template-color:var(--'+color+')"><h4>'+esc(template.name)+'</h4><p>'+esc(template.objective||"Plantilla de entrenamiento")+'</p><div class="template-meta"><span class="tag '+(custom?'tag-green':'tag-blue')+'">'+(custom?'Personalizada':'Incluida')+'</span><span class="tag tag-yellow">'+blocks.length+' bloques</span><span class="tag tag-red">'+exerciseCount+' ejercicios</span></div><div class="template-actions"><button class="btn btn-blue" data-template-use="'+template.id+'" type="button">Usar plantilla</button>'+(custom?'<button class="btn btn-danger" data-template-delete="'+template.id+'" type="button">Eliminar</button>':'')+'</div></article>';
     }).join("");
+    byId("library-count").textContent=templates.length+" plantilla"+(templates.length===1?"":"s");
+    byId("session-library-card").classList.toggle("collapsed",collapsed);
+    byId("library-toggle").textContent=collapsed?"Expandir biblioteca":"Contraer biblioteca";
+    byId("library-toggle").setAttribute("aria-expanded",String(!collapsed));
   }
   function renderSession(){
     if(!sessionDraft.length)sessionDraft=[sessionBlock("Bloque A")];
@@ -716,6 +726,10 @@
     var blocks=templateBlocks(sessionDraft);
     state.sessionTemplates.push({id:id("template"),name:name,category:"Personalizada",objective:byId("session-objective").value.trim(),color:validBlockColor(blocks[0]&&blocks[0].color),blocks:blocks,createdAt:new Date().toISOString()});
     save();byId("template-name").value="";renderSessionLibrary();toast("Plantilla guardada en la biblioteca.");
+  });
+  byId("library-toggle").addEventListener("click",function(){
+    if(!state.settings||typeof state.settings!=="object")state.settings={epleyDivisor:30};
+    state.settings.libraryCollapsed=!state.settings.libraryCollapsed;save();renderSessionLibrary();
   });
   byId("session-library").addEventListener("click",function(e){
     var useId=e.target.dataset.templateUse;
