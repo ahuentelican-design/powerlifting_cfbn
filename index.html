@@ -39,7 +39,7 @@
     .side-note{margin-top:auto;padding:14px;border:1px solid var(--line);background:var(--panel);border-radius:14px;color:var(--muted);font-size:10px;line-height:1.55}
     .main{min-width:0;padding:28px clamp(18px,4vw,54px) 50px}
     .topbar{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:26px}.topbar-left{display:flex;align-items:center;gap:13px;min-width:0}.topbar-left>div{min-width:0}
-    .menu-toggle{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;border:1px solid var(--line);background:var(--panel2);color:#fff;border-radius:11px;padding:9px 11px;font-size:10px;font-weight:800}.menu-toggle:hover{border-color:var(--blue);background:#1c2633}.menu-toggle-icon{font-size:15px;line-height:1}
+    .menu-switch{display:inline-flex;align-items:center;gap:9px;flex:0 0 auto;border:1px solid var(--line);background:var(--panel2);color:#fff;border-radius:999px;padding:6px 8px 6px 11px;font-size:10px;font-weight:800}.menu-switch:hover{border-color:var(--blue);background:#1c2633}.menu-switch-label{white-space:nowrap}.menu-switch-track{position:relative;width:46px;height:24px;flex:0 0 46px;border-radius:999px;background:var(--green);box-shadow:inset 0 0 0 1px rgba(255,255,255,.18);transition:.22s}.menu-switch-knob{position:absolute;top:3px;left:25px;width:18px;height:18px;border-radius:50%;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,.38);transition:left .22s}.menu-switch-status{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}body.sidebar-hidden .menu-switch-track{background:#46515f}body.sidebar-hidden .menu-switch-knob{left:3px}
     .eyebrow{color:var(--red);font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:900;margin-bottom:6px}
     .topbar h2{font-size:clamp(24px,3vw,38px);line-height:1.05;margin:0;font-weight:900}
     .plate-line{display:flex;align-items:center;gap:6px}
@@ -151,7 +151,7 @@
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}body.sidebar-hidden .sidebar{display:none}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
       .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.library-head-actions{justify-content:flex-start}.session-library-card .template-grid{max-height:520px}.student-form-grid{grid-template-columns:1fr}.student-row{align-items:flex-start;flex-direction:column}.student-row-actions{width:100%;justify-content:space-between}.student-sex-select{width:min(190px,70%)}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
-      .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.topbar-left{align-items:flex-start}.menu-toggle{padding:8px}.menu-toggle-text{display:none}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc-grid{justify-self:start;grid-template-columns:repeat(2,96px);gap:16px}.total-disc{width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
+      .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.topbar-left{align-items:flex-start}.menu-switch{padding:5px}.menu-switch-label{display:none}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc-grid{justify-self:start;grid-template-columns:repeat(2,96px);gap:16px}.total-disc{width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
     }
     @media print{
       *{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{background:#fff}.sidebar,.topbar,.student-view-toolbar,.toast{display:none!important}.app{display:block}.main{padding:0}.view{display:none!important}#vista-estudiante{display:block!important}.student-session-sheet{max-width:none;margin:0;border:0;box-shadow:none}.student-view-block,.student-view-exercise,.plate-helper{break-inside:avoid}.student-exercise-progress{display:none}
@@ -180,7 +180,7 @@
 
   <main class="main">
     <header class="topbar">
-      <div class="topbar-left"><button class="menu-toggle" id="sidebar-toggle" type="button" aria-controls="app-sidebar" aria-expanded="true"><span class="menu-toggle-icon" id="sidebar-toggle-icon" aria-hidden="true">←</span><span class="menu-toggle-text" id="sidebar-toggle-text">Ocultar menú</span></button><div><div class="eyebrow">Sistema de seguimiento</div><h2 id="page-title">Panel general</h2></div></div>
+      <div class="topbar-left"><button class="menu-switch" id="sidebar-toggle" type="button" aria-controls="app-sidebar" aria-expanded="true" aria-pressed="true" aria-label="Ocultar menú lateral"><span class="menu-switch-label">Menú</span><span class="menu-switch-track" aria-hidden="true"><span class="menu-switch-knob"></span></span><span class="menu-switch-status" id="sidebar-toggle-status">Visible</span></button><div><div class="eyebrow">Sistema de seguimiento</div><h2 id="page-title">Panel general</h2></div></div>
       <div class="plate-line" aria-hidden="true"><i class="plate p-red"></i><i class="plate p-blue"></i><i class="plate p-yellow"></i><i class="plate p-green"></i></div>
     </header>
 
@@ -444,8 +444,9 @@
     var hidden=!!state.settings.sidebarHidden;
     document.body.classList.toggle("sidebar-hidden",hidden);
     byId("sidebar-toggle").setAttribute("aria-expanded",String(!hidden));
-    byId("sidebar-toggle-icon").textContent=hidden?"☰":"←";
-    byId("sidebar-toggle-text").textContent=hidden?"Mostrar menú":"Ocultar menú";
+    byId("sidebar-toggle").setAttribute("aria-pressed",String(!hidden));
+    byId("sidebar-toggle").setAttribute("aria-label",hidden?"Mostrar menú lateral":"Ocultar menú lateral");
+    byId("sidebar-toggle-status").textContent=hidden?"Oculto":"Visible";
   }
 
   function renderDashboard(){
