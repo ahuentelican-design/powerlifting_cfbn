@@ -99,16 +99,16 @@
     .session-row .field label{font-size:8px}
     .load-box{min-height:42px;display:flex;align-items:center;padding:9px 11px;border-radius:11px;background:linear-gradient(135deg,rgba(40,112,217,.18),rgba(217,45,63,.12));border:1px solid rgba(40,112,217,.35)}
     .load-box b{font-size:16px}.load-box small{display:block;color:var(--muted);font-size:8px;margin-top:2px}
-    .plate-helper{grid-column:1/-1;padding:12px;border:1px solid rgba(255,255,255,.09);border-radius:12px;background:rgba(3,6,10,.48)}
-    .plate-helper-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:9px}.plate-helper-head b{font-size:10px}.plate-helper-head small{display:block;color:var(--muted);font-size:8px;margin-top:3px}
-    .plate-diagram{position:relative;display:grid;grid-template-columns:minmax(80px,1fr) 76px minmax(80px,1fr);align-items:center;min-height:82px;overflow-x:auto;padding:7px 4px}
-    .plate-shaft{position:absolute;left:4%;right:4%;top:50%;height:8px;transform:translateY(-50%);border-radius:5px;background:linear-gradient(#dce3ea,#707a86 48%,#c7d0d9 52%,#616b76);box-shadow:0 2px 5px rgba(0,0,0,.45)}
-    .plate-side{position:relative;z-index:2;display:flex;align-items:center;min-height:70px}.plate-side-left{justify-content:flex-start;flex-direction:row-reverse}.plate-side-right{justify-content:flex-start}
-    .plate-disc{width:18px;height:var(--plate-height);flex:0 0 18px;margin:0 1px;border:1px solid rgba(255,255,255,.34);border-radius:4px;background:var(--plate-color);color:var(--plate-text,#fff);display:grid;place-items:center;box-shadow:inset 2px 0 rgba(255,255,255,.18),inset -2px 0 rgba(0,0,0,.25),0 2px 4px rgba(0,0,0,.35)}
-    .plate-disc span{font-size:6px;font-weight:900;transform:rotate(-90deg);white-space:nowrap}
-    .bar-body{position:relative;z-index:3;width:76px;height:26px;border-radius:6px;background:linear-gradient(#eef3f7,#828c98 48%,#d4dbe2 52%,#68727d);color:#111722;display:grid;place-items:center;font-size:8px;font-weight:900;box-shadow:inset 0 0 0 2px rgba(0,0,0,.20),0 3px 7px rgba(0,0,0,.35)}
-    .plate-summary{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding-top:8px;border-top:1px solid rgba(255,255,255,.07);color:var(--muted);font-size:9px}.plate-summary strong{color:#e7edf5}
-    .plate-warning{grid-column:1/-1;padding:11px;border-radius:9px;background:rgba(217,45,63,.10);border:1px solid rgba(217,45,63,.32);color:#ff9aa6;font-size:9px;font-weight:700}
+    .plate-helper{grid-column:1/-1;overflow:hidden;border:1px solid rgba(255,255,255,.12);border-radius:12px;background:#eef1f4}
+    .plate-helper-head{display:flex;justify-content:space-between;gap:12px;align-items:center;padding:12px 16px;background:#202328;color:#fff}.plate-helper-head b{font-size:19px;font-weight:900}.plate-helper-head small{display:block;color:#c7ced7;font-size:9px;margin-top:3px}
+    .plate-diagram{position:relative;display:flex;align-items:center;min-height:154px;overflow-x:auto;padding:14px 34px;background:linear-gradient(180deg,#fff,#e9edf1)}
+    .plate-shaft{position:absolute;left:14px;right:18px;top:50%;height:13px;transform:translateY(-50%);border-radius:3px;background:linear-gradient(#6c7177,#292d31 46%,#4e5358 54%,#202428);box-shadow:0 2px 4px rgba(0,0,0,.32)}
+    .plate-side-one{position:relative;z-index:2;display:flex;align-items:center;min-height:132px}
+    .plate-disc{width:46px;height:var(--plate-height);flex:0 0 46px;margin:0 2px;border:1px solid rgba(0,0,0,.20);border-radius:3px;background:var(--plate-color);color:var(--plate-text,#fff);display:grid;place-items:center;box-shadow:inset 3px 0 rgba(255,255,255,.18),inset -3px 0 rgba(0,0,0,.24),0 3px 5px rgba(0,0,0,.24)}
+    .plate-disc span{display:grid;place-items:center;line-height:1;text-align:center;text-shadow:0 1px 2px rgba(0,0,0,.32)}.plate-disc b{font-size:15px;font-weight:900}.plate-disc small{font-size:8px;font-weight:900;margin-top:3px;text-transform:lowercase}
+    .bar-collar{position:relative;z-index:3;width:30px;height:44px;flex:0 0 30px;margin-left:5px;border-radius:3px;background:linear-gradient(90deg,#737a81,#bec4ca 48%,#686f76);box-shadow:inset 0 0 0 2px rgba(0,0,0,.16),0 3px 5px rgba(0,0,0,.24)}
+    .plate-summary{display:flex;gap:8px;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:10px 14px;background:#141920;color:var(--muted);font-size:9px}.plate-summary strong{color:#e7edf5}
+    .plate-warning{margin:12px;padding:11px;border-radius:9px;background:rgba(217,45,63,.10);border:1px solid rgba(217,45,63,.32);color:#b51f31;font-size:9px;font-weight:800}
     .session-objective{grid-column:span 2}
     .session-summary{display:grid;gap:7px}
     .session-history-block{padding:7px 9px;border-radius:9px;background:rgba(8,11,16,.48);border-left:3px solid var(--blue)}
@@ -125,7 +125,7 @@
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
-      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{grid-template-columns:minmax(110px,1fr) 64px minmax(110px,1fr)}.bar-body{width:64px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}
+      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}
       .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc{justify-self:start;width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
     }
   </style>
@@ -310,11 +310,11 @@
   var BLOCK_COLORS=[{key:"blue",name:"Azul"},{key:"red",name:"Rojo"},{key:"yellow",name:"Amarillo"},{key:"green",name:"Verde"}];
   var BAR_OPTIONS=[20,12];
   var PLATES=[
-    {weight:20,color:"#2870d9",text:"#fff",height:70},{weight:15,color:"#f3c83f",text:"#111722",height:64},
-    {weight:10,color:"#2fa36b",text:"#fff",height:58},{weight:5,color:"#e8edf3",text:"#111722",height:52},
-    {weight:2.5,color:"#d92d3f",text:"#fff",height:46},{weight:2,color:"#2870d9",text:"#fff",height:43},
-    {weight:1.5,color:"#f3c83f",text:"#111722",height:40},{weight:1,color:"#2fa36b",text:"#fff",height:37},
-    {weight:0.5,color:"#f4f7fb",text:"#111722",height:34}
+    {weight:20,color:"#2870d9",text:"#fff",height:128},{weight:15,color:"#f3c83f",text:"#111722",height:118},
+    {weight:10,color:"#2fa36b",text:"#fff",height:108},{weight:5,color:"#e8edf3",text:"#111722",height:98},
+    {weight:2.5,color:"#d92d3f",text:"#fff",height:90},{weight:2,color:"#2870d9",text:"#fff",height:85},
+    {weight:1.5,color:"#f3c83f",text:"#111722",height:80},{weight:1,color:"#2fa36b",text:"#fff",height:75},
+    {weight:0.5,color:"#f4f7fb",text:"#111722",height:70}
   ];
   var BUILTIN_TEMPLATES=[
     {id:"builtin-5x5",name:"Fuerza 5×5",category:"Fuerza",objective:"Desarrollar fuerza general mediante series de cinco repeticiones.",color:"red",blocks:[
@@ -477,7 +477,7 @@
   }
   function plateDiscMarkup(weight){
     var plate=PLATES.find(function(item){return item.weight===weight;});if(!plate)return"";
-    return '<i class="plate-disc" style="--plate-color:'+plate.color+';--plate-text:'+plate.text+';--plate-height:'+plate.height+'px" title="Disco de '+String(weight).replace(".",",")+' kg"><span>'+String(weight).replace(".",",")+'</span></i>';
+    return '<i class="plate-disc" style="--plate-color:'+plate.color+';--plate-text:'+plate.text+';--plate-height:'+plate.height+'px" title="Disco de '+String(weight).replace(".",",")+' kg"><span><b>'+String(weight).replace(".",",")+'</b><small>kg</small></span></i>';
   }
   function renderPlateHelper(target,bar){
     var plan=platePlan(target,bar);
@@ -486,7 +486,7 @@
     var counts={};plan.plates.forEach(function(weight){counts[weight]=(counts[weight]||0)+1;});
     var perSide=PLATES.filter(function(plate){return counts[plate.weight];}).map(function(plate){return String(plate.weight).replace(".",",")+" kg × "+counts[plate.weight];}).join(" + ")||"solo la barra";
     var exact=Math.abs(plan.difference)<.01,diff=(plan.difference>0?"+":"")+n(plan.difference,1)+" kg";
-    return '<div class="plate-helper"><div class="plate-helper-head"><div><b>Montaje visual · '+n(plan.total,1)+' kg totales</b><small>Carga objetivo por porcentaje: '+n(plan.target,1)+' kg</small></div><span class="tag '+(exact?'tag-green':plan.difference<0?'tag-blue':'tag-red')+'">'+(exact?'Carga exacta':diff)+'</span></div><div class="plate-diagram"><div class="plate-shaft"></div><div class="plate-side plate-side-left">'+discs+'</div><div class="bar-body">BARRA '+plan.bar+' KG</div><div class="plate-side plate-side-right">'+discs+'</div></div><div class="plate-summary"><span><strong>Discos por lado:</strong> '+perSide+'</span><span>'+(plan.plates.length?plan.plates.length+' disco'+(plan.plates.length===1?'':'s')+' por lado':'sin discos adicionales')+'</span></div></div>';
+    return '<div class="plate-helper"><div class="plate-helper-head"><div><b>'+n(plan.total,1)+' kg</b><small>Barra de '+plan.bar+' kg · representación de un solo lado</small></div><span class="tag '+(exact?'tag-green':plan.difference<0?'tag-blue':'tag-red')+'">'+(exact?'Carga exacta':diff)+'</span></div><div class="plate-diagram" aria-label="Discos que se deben instalar en un lado de la barra"><div class="plate-shaft"></div><div class="plate-side-one">'+discs+'</div><div class="bar-collar" aria-hidden="true"></div></div><div class="plate-summary"><span><strong>Discos por lado:</strong> '+perSide+'</span><span>'+(plan.plates.length?plan.plates.length+' disco'+(plan.plates.length===1?'':'s')+' por lado':'sin discos adicionales')+'</span></div></div>';
   }
   function templateBlocks(blocks){
     return (blocks||[]).map(function(block,index){return {
