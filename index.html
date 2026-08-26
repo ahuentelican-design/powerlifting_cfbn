@@ -21,8 +21,9 @@
     body{margin:0;min-height:100vh;background:radial-gradient(circle at 82% 0%,rgba(40,112,217,.13),transparent 28%),radial-gradient(circle at 18% 100%,rgba(217,45,63,.10),transparent 25%),var(--bg);color:var(--text);font-family:Montserrat,Arial,sans-serif}
     button,input,select,textarea{font:inherit}
     button{cursor:pointer}
-    .app{min-height:100vh;display:grid;grid-template-columns:270px minmax(0,1fr)}
-    .sidebar{position:sticky;top:0;height:100vh;padding:24px 18px;background:rgba(12,16,23,.97);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:20}
+    .app{min-height:100vh;display:grid;grid-template-columns:270px minmax(0,1fr);transition:grid-template-columns .24s ease}
+    .sidebar{position:sticky;top:0;min-width:0;height:100vh;padding:24px 18px;background:rgba(12,16,23,.97);border-right:1px solid var(--line);display:flex;flex-direction:column;z-index:20;overflow:hidden;transition:padding .24s ease,opacity .18s ease,transform .24s ease}
+    body.sidebar-hidden .app{grid-template-columns:0 minmax(0,1fr)}body.sidebar-hidden .sidebar{padding-left:0;padding-right:0;border-right:0;opacity:0;transform:translateX(-100%);pointer-events:none}
     .brand{display:block;padding:2px 4px 23px}
     .brand-logo{display:block;width:100%;max-width:230px;height:auto;object-fit:contain;filter:invert(1) drop-shadow(0 0 2px rgba(255,255,255,.55)) drop-shadow(0 0 9px rgba(255,255,255,.20));mix-blend-mode:screen}
     .nav{display:grid;gap:7px}
@@ -37,7 +38,8 @@
     .nav-btn:nth-child(7) .nav-dot,.nav-btn:nth-child(8) .nav-dot{background:var(--yellow)}
     .side-note{margin-top:auto;padding:14px;border:1px solid var(--line);background:var(--panel);border-radius:14px;color:var(--muted);font-size:10px;line-height:1.55}
     .main{min-width:0;padding:28px clamp(18px,4vw,54px) 50px}
-    .topbar{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:26px}
+    .topbar{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:26px}.topbar-left{display:flex;align-items:center;gap:13px;min-width:0}.topbar-left>div{min-width:0}
+    .menu-toggle{display:inline-flex;align-items:center;gap:7px;flex:0 0 auto;border:1px solid var(--line);background:var(--panel2);color:#fff;border-radius:11px;padding:9px 11px;font-size:10px;font-weight:800}.menu-toggle:hover{border-color:var(--blue);background:#1c2633}.menu-toggle-icon{font-size:15px;line-height:1}
     .eyebrow{color:var(--red);font-size:10px;text-transform:uppercase;letter-spacing:.18em;font-weight:900;margin-bottom:6px}
     .topbar h2{font-size:clamp(24px,3vw,38px);line-height:1.05;margin:0;font-weight:900}
     .plate-line{display:flex;align-items:center;gap:6px}
@@ -147,9 +149,9 @@
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:1050px){.student-admin-grid{grid-template-columns:1fr}}
     @media(max-width:760px){
-      .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
+      .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}body.sidebar-hidden .sidebar{display:none}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
       .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.library-head-actions{justify-content:flex-start}.session-library-card .template-grid{max-height:520px}.student-form-grid{grid-template-columns:1fr}.student-row{align-items:flex-start;flex-direction:column}.student-row-actions{width:100%;justify-content:space-between}.student-sex-select{width:min(190px,70%)}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
-      .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc-grid{justify-self:start;grid-template-columns:repeat(2,96px);gap:16px}.total-disc{width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
+      .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.topbar-left{align-items:flex-start}.menu-toggle{padding:8px}.menu-toggle-text{display:none}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc-grid{justify-self:start;grid-template-columns:repeat(2,96px);gap:16px}.total-disc{width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
     }
     @media print{
       *{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{background:#fff}.sidebar,.topbar,.student-view-toolbar,.toast{display:none!important}.app{display:block}.main{padding:0}.view{display:none!important}#vista-estudiante{display:block!important}.student-session-sheet{max-width:none;margin:0;border:0;box-shadow:none}.student-view-block,.student-view-exercise,.plate-helper{break-inside:avoid}.student-exercise-progress{display:none}
@@ -158,7 +160,7 @@
 </head>
 <body>
 <div class="app">
-  <aside class="sidebar">
+  <aside class="sidebar" id="app-sidebar">
     <div class="brand">
       <img class="brand-logo" src="assets/logo-cbfn-powerlifting.png" alt="Colegio Bicentenario Felmer Niklitschek">
     </div>
@@ -178,7 +180,7 @@
 
   <main class="main">
     <header class="topbar">
-      <div><div class="eyebrow">Sistema de seguimiento</div><h2 id="page-title">Panel general</h2></div>
+      <div class="topbar-left"><button class="menu-toggle" id="sidebar-toggle" type="button" aria-controls="app-sidebar" aria-expanded="true"><span class="menu-toggle-icon" id="sidebar-toggle-icon" aria-hidden="true">←</span><span class="menu-toggle-text" id="sidebar-toggle-text">Ocultar menú</span></button><div><div class="eyebrow">Sistema de seguimiento</div><h2 id="page-title">Panel general</h2></div></div>
       <div class="plate-line" aria-hidden="true"><i class="plate p-red"></i><i class="plate p-blue"></i><i class="plate p-yellow"></i><i class="plate p-green"></i></div>
     </header>
 
@@ -437,6 +439,15 @@
   }
   document.querySelectorAll(".nav-btn").forEach(function(btn){btn.addEventListener("click",function(){showView(btn.dataset.view);});});
 
+  function renderSidebarState(){
+    if(!state.settings||typeof state.settings!=="object")state.settings={epleyDivisor:30};
+    var hidden=!!state.settings.sidebarHidden;
+    document.body.classList.toggle("sidebar-hidden",hidden);
+    byId("sidebar-toggle").setAttribute("aria-expanded",String(!hidden));
+    byId("sidebar-toggle-icon").textContent=hidden?"☰":"←";
+    byId("sidebar-toggle-text").textContent=hidden?"Mostrar menú":"Ocultar menú";
+  }
+
   function renderDashboard(){
     byId("metric-students").textContent=state.students.length;
     byId("metric-rm").textContent=state.rmRecords.length;
@@ -655,7 +666,7 @@
       return '<div class="student-row"><div><div class="student-name">'+esc(s.name)+'</div><div class="student-meta">'+esc(s.course||"Sin curso")+' · '+studentSexLabel(s.sex)+' · '+count+' registros</div></div><div class="student-row-actions"><select class="student-sex-select" data-student-sex="'+s.id+'" aria-label="Sexo de '+esc(s.name)+'">'+studentSexOptions(s.sex)+'</select><button class="small-btn" data-delete-student="'+s.id+'">Eliminar</button></div></div>';
     }).join(""):'<div class="empty">No hay estudiantes.</div>';
   }
-  function renderAll(){refreshSelects();renderDashboard();renderRM();renderMatrix();renderProfile();renderSessionLibrary();renderSession();renderStudentView();renderAnthro();renderAnthroProfile();renderStudents();}
+  function renderAll(){renderSidebarState();refreshSelects();renderDashboard();renderRM();renderMatrix();renderProfile();renderSessionLibrary();renderSession();renderStudentView();renderAnthro();renderAnthroProfile();renderStudents();}
 
   byId("rm-form").addEventListener("submit",function(e){
     e.preventDefault();if(!state.students.length){toast("Primero agrega un estudiante.");return;}
@@ -737,6 +748,10 @@
   byId("library-toggle").addEventListener("click",function(){
     if(!state.settings||typeof state.settings!=="object")state.settings={epleyDivisor:30};
     state.settings.libraryCollapsed=!state.settings.libraryCollapsed;save();renderSessionLibrary();
+  });
+  byId("sidebar-toggle").addEventListener("click",function(){
+    if(!state.settings||typeof state.settings!=="object")state.settings={epleyDivisor:30};
+    state.settings.sidebarHidden=!state.settings.sidebarHidden;save();renderSidebarState();
   });
   byId("session-library").addEventListener("click",function(e){
     var useId=e.target.dataset.templateUse;
