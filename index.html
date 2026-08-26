@@ -73,15 +73,15 @@
     .tag{display:inline-flex;align-items:center;border-radius:999px;padding:5px 8px;font-size:9px;font-weight:800}
     .tag-red{background:rgba(217,45,63,.15);color:#ff8491}.tag-blue{background:rgba(40,112,217,.16);color:#8cbcff}.tag-green{background:rgba(47,163,107,.15);color:#7ee1ad}.tag-yellow{background:rgba(243,200,63,.13);color:#ffe17b}
     .empty{padding:30px;text-align:center;color:var(--muted);font-size:11px}
-    .hero-panel{padding:25px;display:grid;grid-template-columns:1.4fr .6fr;gap:20px;align-items:center;margin-bottom:18px}
+    .hero-panel{padding:25px;display:grid;grid-template-columns:1.25fr .75fr;gap:20px;align-items:center;margin-bottom:18px}
     .hero-panel h3{font-size:23px;margin:0 0 9px}.hero-panel p{max-width:720px;color:var(--muted);font-size:12px;line-height:1.65;margin:0}
-    .total-disc{justify-self:end;width:120px;height:120px;border-radius:50%;background:var(--blue);border:13px solid #e8edf3;box-shadow:0 0 0 10px var(--red),0 0 0 14px #090c11;display:grid;place-items:center;text-align:center}
-    .total-disc b{font-size:21px}.total-disc span{display:block;font-size:9px}
+    .total-disc-grid{justify-self:end;display:grid;grid-template-columns:repeat(2,108px);gap:18px}.total-disc{width:108px;height:108px;border-radius:50%;background:var(--disc-color,var(--blue));border:10px solid #e8edf3;box-shadow:0 0 0 6px var(--disc-ring,var(--red)),0 0 0 10px #090c11;display:grid;place-items:center;text-align:center}.total-disc-male{--disc-color:var(--blue);--disc-ring:#174f9d}.total-disc-female{--disc-color:var(--red);--disc-ring:#991c2b}
+    .total-disc b{font-size:17px}.total-disc span{display:block;max-width:78px;font-size:7px;line-height:1.25;font-weight:800}
     .profile-head{display:grid;grid-template-columns:280px 1fr;gap:18px;align-items:end;margin-bottom:18px}
     .best-grid,.anthro-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
     .best-box{padding:15px;border:1px solid var(--line);background:rgba(8,11,16,.42);border-radius:13px}.best-box span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase}.best-box b{display:block;font-size:22px;margin-top:7px}.best-box small{color:var(--muted)}
     .latest-list{display:grid;gap:8px}.latest-item{display:grid;grid-template-columns:90px 1fr auto;gap:10px;align-items:center;padding:11px;border-radius:11px;background:rgba(8,11,16,.44);border:1px solid var(--line);font-size:10px}.latest-item strong{font-size:11px}
-    .student-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px;border-bottom:1px solid var(--line)}.student-row:last-child{border-bottom:0}.student-name{font-weight:800;font-size:12px}.student-meta{color:var(--muted);font-size:9px;margin-top:4px}
+    .student-form-grid{grid-template-columns:minmax(180px,1fr) 140px 160px}.student-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:13px;border-bottom:1px solid var(--line)}.student-row:last-child{border-bottom:0}.student-name{font-weight:800;font-size:12px}.student-meta{color:var(--muted);font-size:9px;margin-top:4px}.student-row-actions{display:flex;align-items:center;gap:8px}.student-sex-select{width:140px;padding:7px 9px;font-size:9px}
     .small-btn{border:1px solid var(--line);background:transparent;color:#ff8795;border-radius:8px;padding:6px 8px;font-size:9px;font-weight:800}
     .session-rows{display:grid;gap:16px}
     .session-block{padding:16px;border:1px solid var(--line);border-left:5px solid var(--block-color,var(--blue));border-radius:16px;background:linear-gradient(145deg,rgba(25,33,45,.82),rgba(10,14,20,.78))}
@@ -146,8 +146,8 @@
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
-      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.library-head-actions{justify-content:flex-start}.session-library-card .template-grid{max-height:520px}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
-      .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc{justify-self:start;width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
+      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.library-head-actions{justify-content:flex-start}.session-library-card .template-grid{max-height:520px}.student-form-grid{grid-template-columns:1fr}.student-row{align-items:flex-start;flex-direction:column}.student-row-actions{width:100%;justify-content:space-between}.student-sex-select{width:min(190px,70%)}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
+      .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc-grid{justify-self:start;grid-template-columns:repeat(2,96px);gap:16px}.total-disc{width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
     }
     @media print{
       *{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{background:#fff}.sidebar,.topbar,.student-view-toolbar,.toast{display:none!important}.app{display:block}.main{padding:0}.view{display:none!important}#vista-estudiante{display:block!important}.student-session-sheet{max-width:none;margin:0;border:0;box-shadow:none}.student-view-block,.student-view-exercise,.plate-helper{break-inside:avoid}.student-exercise-progress{display:none}
@@ -183,7 +183,7 @@
     <section id="inicio" class="view active">
       <div class="hero-panel card">
         <div><h3>Fuerza, progreso y registro.</h3><p>Administra los mejores RM, calcula cargas de entrenamiento y controla mediciones antropométricas desde una sola aplicación inspirada en el registro Excel.</p></div>
-        <div class="total-disc"><div><b id="hero-total">0 kg</b><span>MEJOR TOTAL SBD</span></div></div>
+        <div class="total-disc-grid"><div class="total-disc total-disc-male"><div><b id="hero-total-male">0 kg</b><span>MEJOR TOTAL SBD MASCULINO</span></div></div><div class="total-disc total-disc-female"><div><b id="hero-total-female">0 kg</b><span>MEJOR TOTAL SBD FEMENINO</span></div></div></div>
       </div>
       <div class="grid grid-4">
         <article class="card metric" style="--accent:var(--red)"><div class="metric-label">Estudiantes</div><div class="metric-value" id="metric-students">0</div><small>lista compartida</small></article>
@@ -314,7 +314,7 @@
       <div class="grid grid-2">
         <article class="card section-card" style="margin-top:0">
           <div class="card-head"><div><h3>Lista compartida de estudiantes</h3><p>Se utiliza en todos los formularios y fichas.</p></div></div>
-          <form id="student-form"><div class="form-grid" style="grid-template-columns:1fr 140px"><div class="field"><label for="student-name">Nombre</label><input id="student-name" type="text" maxlength="80" required placeholder="Nombre y apellido"></div><div class="field"><label for="student-course">Curso</label><input id="student-course" type="text" maxlength="25" placeholder="Ej. 4° Medio"></div></div><div class="actions"><button class="btn btn-green" type="submit">Agregar estudiante</button></div></form>
+          <form id="student-form"><div class="form-grid student-form-grid"><div class="field"><label for="student-name">Nombre</label><input id="student-name" type="text" maxlength="80" required placeholder="Nombre y apellido"></div><div class="field"><label for="student-course">Curso</label><input id="student-course" type="text" maxlength="25" placeholder="Ej. 4° Medio"></div><div class="field"><label for="student-sex">Sexo</label><select id="student-sex" required><option value="" selected disabled>Seleccionar</option><option value="femenino">Femenino</option><option value="masculino">Masculino</option></select></div></div><div class="actions"><button class="btn btn-green" type="submit">Agregar estudiante</button></div></form>
           <div id="student-list" style="margin-top:18px;border:1px solid var(--line);border-radius:13px;overflow:hidden"></div>
         </article>
         <article class="card section-card" style="margin-top:0">
@@ -405,9 +405,12 @@
   function today(){return new Date().toISOString().slice(0,10);}
   function dateLabel(value){if(!value)return"Sin fecha";var p=value.split("-");return p.length===3?p[2]+"/"+p[1]+"/"+p[0]:value;}
   function studentName(sid){var s=state.students.find(function(x){return x.id===sid;});return s?s.name:"Estudiante eliminado";}
+  function normalizedSex(value){return value==="femenino"||value==="masculino"?value:"sin-registro";}
+  function studentSexLabel(value){var sex=normalizedSex(value);return sex==="femenino"?"Femenino":sex==="masculino"?"Masculino":"Sin registrar";}
+  function studentSexOptions(selected){var current=normalizedSex(selected);return [{key:"sin-registro",name:"Sin registrar"},{key:"femenino",name:"Femenino"},{key:"masculino",name:"Masculino"}].map(function(option){return '<option value="'+option.key+'"'+(option.key===current?' selected':'')+'>'+option.name+'</option>';}).join("");}
   function exerciseName(key){var e=EXERCISES.find(function(x){return x.key===key;});return e?e.name:key;}
   function bestRM(sid,key){var values=state.rmRecords.filter(function(r){return r.studentId===sid&&r.exercise===key;}).map(function(r){return Number(r.rm)||0;});return values.length?Math.max.apply(null,values):0;}
-  function bestTotal(sid){return bestRM(sid,"sentadilla")+bestRM(sid,"press-banca")+bestRM(sid,"peso-muerto");}
+  function bestTotal(sid){var squat=bestRM(sid,"sentadilla"),bench=bestRM(sid,"press-banca"),deadlift=bestRM(sid,"peso-muerto");return squat&&bench&&deadlift?squat+bench+deadlift:0;}
   function latestByDate(records){return records.slice().sort(function(a,b){return (b.date+b.createdAt).localeCompare(a.date+a.createdAt);});}
   function toast(message){var el=byId("toast");el.textContent=message;el.classList.add("show");clearTimeout(toast.timer);toast.timer=setTimeout(function(){el.classList.remove("show");},2600);}
   function fillSelect(el,items,mapper){
@@ -436,8 +439,10 @@
     byId("metric-students").textContent=state.students.length;
     byId("metric-rm").textContent=state.rmRecords.length;
     byId("metric-anthro").textContent=state.anthroRecords.length;
-    var total=Math.max.apply(null,[0].concat(state.students.map(function(s){return bestTotal(s.id);})));
-    byId("hero-total").textContent=n(total,1)+" kg";
+    var maleTotal=Math.max.apply(null,[0].concat(state.students.filter(function(s){return normalizedSex(s.sex)==="masculino";}).map(function(s){return bestTotal(s.id);}))); 
+    var femaleTotal=Math.max.apply(null,[0].concat(state.students.filter(function(s){return normalizedSex(s.sex)==="femenino";}).map(function(s){return bestTotal(s.id);}))); 
+    byId("hero-total-male").textContent=n(maleTotal,1)+" kg";
+    byId("hero-total-female").textContent=n(femaleTotal,1)+" kg";
     var combined=latestByDate(state.rmRecords.map(function(r){return {date:r.date,createdAt:r.createdAt||"",label:"RM · "+studentName(r.studentId),detail:exerciseName(r.exercise)+" · "+n(r.rm,1)+" kg",kind:"rm"};}).concat(
       state.anthroRecords.map(function(r){return {date:r.date,createdAt:r.createdAt||"",label:"Antropometría · "+studentName(r.studentId),detail:n(r.weight,1)+" kg · IMC "+n(r.bmi,1),kind:"anthro"};})
     ));
@@ -645,7 +650,7 @@
   function renderStudents(){
     byId("student-list").innerHTML=state.students.length?state.students.map(function(s){
       var count=state.rmRecords.filter(function(r){return r.studentId===s.id;}).length+state.anthroRecords.filter(function(r){return r.studentId===s.id;}).length+(state.sessions||[]).filter(function(r){return r.studentId===s.id;}).length;
-      return '<div class="student-row"><div><div class="student-name">'+esc(s.name)+'</div><div class="student-meta">'+esc(s.course||"Sin curso")+' · '+count+' registros</div></div><button class="small-btn" data-delete-student="'+s.id+'">Eliminar</button></div>';
+      return '<div class="student-row"><div><div class="student-name">'+esc(s.name)+'</div><div class="student-meta">'+esc(s.course||"Sin curso")+' · '+studentSexLabel(s.sex)+' · '+count+' registros</div></div><div class="student-row-actions"><select class="student-sex-select" data-student-sex="'+s.id+'" aria-label="Sexo de '+esc(s.name)+'">'+studentSexOptions(s.sex)+'</select><button class="small-btn" data-delete-student="'+s.id+'">Eliminar</button></div></div>';
     }).join(""):'<div class="empty">No hay estudiantes.</div>';
   }
   function renderAll(){refreshSelects();renderDashboard();renderRM();renderMatrix();renderProfile();renderSessionLibrary();renderSession();renderStudentView();renderAnthro();renderAnthroProfile();renderStudents();}
@@ -764,7 +769,11 @@
   });
   byId("student-form").addEventListener("submit",function(e){
     e.preventDefault();var name=byId("student-name").value.trim();if(!name)return;
-    state.students.push({id:id("student"),name:name,course:byId("student-course").value.trim()});save();e.target.reset();renderAll();toast("Estudiante agregado.");
+    state.students.push({id:id("student"),name:name,course:byId("student-course").value.trim(),sex:byId("student-sex").value});save();e.target.reset();renderAll();toast("Estudiante agregado.");
+  });
+  byId("student-list").addEventListener("change",function(e){
+    var sid=e.target.dataset.studentSex;if(!sid)return;var student=state.students.find(function(s){return s.id===sid;});if(!student)return;
+    student.sex=normalizedSex(e.target.value)==="sin-registro"?"":normalizedSex(e.target.value);save();renderDashboard();renderStudents();toast("Sexo del estudiante actualizado.");
   });
   document.addEventListener("click",function(e){
     var target=e.target;
