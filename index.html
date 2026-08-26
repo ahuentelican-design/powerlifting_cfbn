@@ -47,6 +47,7 @@
     .view{display:none;animation:fade .2s ease}.view.active{display:block}
     @keyframes fade{from{opacity:.5;transform:translateY(4px)}to{opacity:1;transform:none}}
     .grid{display:grid;gap:18px}.grid-4{grid-template-columns:repeat(4,minmax(0,1fr))}.grid-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .student-admin-grid{grid-template-columns:minmax(0,1.7fr) minmax(280px,.8fr)}.student-admin-grid .section-card{min-width:0}
     .card{background:linear-gradient(145deg,rgba(23,30,41,.96),rgba(14,19,27,.96));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
     .metric{padding:20px;position:relative;overflow:hidden}.metric:after{content:"";position:absolute;right:-18px;bottom:-18px;width:64px;height:64px;border-radius:50%;border:14px solid var(--accent, var(--red));opacity:.15}
     .metric-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.11em;font-weight:800}.metric-value{font-size:30px;font-weight:900;margin-top:10px}.metric small{font-size:10px;color:var(--muted)}
@@ -144,6 +145,7 @@
     .toast{position:fixed;right:22px;bottom:22px;z-index:99;background:#f5f7fa;color:#111722;padding:12px 16px;border-radius:11px;font-size:11px;font-weight:800;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}
     .mobile-title{display:none}
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:1050px){.student-admin-grid{grid-template-columns:1fr}}
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
       .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.library-head-actions{justify-content:flex-start}.session-library-card .template-grid{max-height:520px}.student-form-grid{grid-template-columns:1fr}.student-row{align-items:flex-start;flex-direction:column}.student-row-actions{width:100%;justify-content:space-between}.student-sex-select{width:min(190px,70%)}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
@@ -311,7 +313,7 @@
     </section>
 
     <section id="estudiantes" class="view">
-      <div class="grid grid-2">
+      <div class="grid grid-2 student-admin-grid">
         <article class="card section-card" style="margin-top:0">
           <div class="card-head"><div><h3>Lista compartida de estudiantes</h3><p>Se utiliza en todos los formularios y fichas.</p></div></div>
           <form id="student-form"><div class="form-grid student-form-grid"><div class="field"><label for="student-name">Nombre</label><input id="student-name" type="text" maxlength="80" required placeholder="Nombre y apellido"></div><div class="field"><label for="student-course">Curso</label><input id="student-course" type="text" maxlength="25" placeholder="Ej. 4° Medio"></div><div class="field"><label for="student-sex">Sexo</label><select id="student-sex" required><option value="" selected disabled>Seleccionar</option><option value="femenino">Femenino</option><option value="masculino">Masculino</option></select></div></div><div class="actions"><button class="btn btn-green" type="submit">Agregar estudiante</button></div></form>
