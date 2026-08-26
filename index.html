@@ -32,8 +32,9 @@
     .nav-dot{width:10px;height:10px;border-radius:50%;background:var(--panel3);box-shadow:0 0 0 2px rgba(255,255,255,.08)}
     .nav-btn:nth-child(2) .nav-dot,.nav-btn:nth-child(4) .nav-dot{background:var(--red)}
     .nav-btn:nth-child(3) .nav-dot{background:var(--blue)}
-    .nav-btn:nth-child(5) .nav-dot,.nav-btn:nth-child(8) .nav-dot{background:var(--green)}
-    .nav-btn:nth-child(6) .nav-dot,.nav-btn:nth-child(7) .nav-dot{background:var(--yellow)}
+    .nav-btn:nth-child(5) .nav-dot,.nav-btn:nth-child(9) .nav-dot{background:var(--green)}
+    .nav-btn:nth-child(6) .nav-dot{background:var(--blue)}
+    .nav-btn:nth-child(7) .nav-dot,.nav-btn:nth-child(8) .nav-dot{background:var(--yellow)}
     .side-note{margin-top:auto;padding:14px;border:1px solid var(--line);background:var(--panel);border-radius:14px;color:var(--muted);font-size:10px;line-height:1.55}
     .main{min-width:0;padding:28px clamp(18px,4vw,54px) 50px}
     .topbar{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:26px}
@@ -119,14 +120,35 @@
     .template-card h4{margin:0 0 6px;font-size:13px}.template-card p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}
     .template-meta{display:flex;gap:6px;flex-wrap:wrap;margin:11px 0}.template-actions{display:flex;gap:8px;flex-wrap:wrap}
     .template-card .tag{font-size:8px}
+    .student-view-toolbar{margin-top:0}
+    .student-session-sheet{max-width:1120px;margin:18px auto 0;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#0d1219;box-shadow:var(--shadow)}
+    .student-session-hero{padding:24px;background:radial-gradient(circle at 90% 0%,rgba(40,112,217,.35),transparent 35%),linear-gradient(135deg,#1b222d,#10151d 62%,#32131a);border-bottom:1px solid var(--line)}
+    .student-session-brand{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}.student-session-logo{width:170px;max-height:72px;object-fit:contain;object-position:right top;filter:invert(1) drop-shadow(0 0 4px rgba(255,255,255,.25));mix-blend-mode:screen}
+    .student-session-hero .eyebrow{margin-bottom:7px}.student-session-hero h3{font-size:clamp(24px,4vw,40px);margin:0;font-weight:900}.student-session-hero p{margin:8px 0 0;color:#b8c4d2;font-size:11px;line-height:1.55}
+    .student-session-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin-top:18px}.student-session-stat{padding:11px;border:1px solid rgba(255,255,255,.10);border-radius:11px;background:rgba(5,8,12,.34)}.student-session-stat span{display:block;color:#9baabd;font-size:8px;text-transform:uppercase;font-weight:800}.student-session-stat b{display:block;margin-top:5px;font-size:13px}
+    .student-progress-track{height:9px;margin-top:15px;border-radius:999px;background:#28313d;overflow:hidden}.student-progress-track i{display:block;height:100%;width:var(--progress,0%);border-radius:inherit;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green));transition:.25s}
+    .student-session-body{display:grid;gap:16px;padding:18px}
+    .student-view-block{padding:16px;border:1px solid var(--line);border-left:6px solid var(--block-color,var(--blue));border-radius:15px;background:#141a23}
+    .student-view-block-head{display:grid;grid-template-columns:1fr auto;gap:14px;align-items:start;padding-bottom:12px;border-bottom:1px solid var(--line)}.student-view-block-head h4{margin:4px 0 5px;font-size:18px}.student-view-block-head p{margin:0;color:var(--muted);font-size:10px;line-height:1.5}.student-block-order{color:var(--block-color);font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.09em}.student-block-meta{text-align:right;color:#c9d3df;font-size:10px;font-weight:800;line-height:1.7}
+    .student-view-exercises{display:grid;gap:12px;margin-top:13px}.student-view-exercise{padding:14px;border:1px solid var(--line);border-radius:13px;background:#0b1017;transition:.2s}.student-view-exercise.completed{border-color:rgba(47,163,107,.58);background:rgba(47,163,107,.07)}
+    .student-exercise-head{display:flex;justify-content:space-between;gap:12px;align-items:center;margin-bottom:11px}.student-exercise-head h5{font-size:15px;margin:0}.student-exercise-number{display:inline-grid;place-items:center;width:25px;height:25px;margin-right:8px;border-radius:50%;background:var(--block-color);color:#fff;font-size:10px;font-weight:900}
+    .student-check{display:flex;align-items:center;gap:8px;color:#cbd5df;font-size:10px;font-weight:800;cursor:pointer}.student-check input{width:18px;height:18px;margin:0;accent-color:var(--green)}
+    .student-exercise-metrics{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}.student-exercise-metric{padding:9px;border-radius:9px;background:#171e28;border:1px solid #273342}.student-exercise-metric span{display:block;color:#8f9daf;font-size:7px;text-transform:uppercase;font-weight:900}.student-exercise-metric b{display:block;margin-top:4px;font-size:11px}
+    .student-view-exercise .plate-helper{margin-top:12px}
+    .student-exercise-progress{display:grid;grid-template-columns:.8fr .65fr 1.7fr;gap:10px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line)}.student-exercise-progress .field label{font-size:8px}.student-exercise-progress input,.student-exercise-progress select{padding:9px 10px;font-size:10px}
+    .student-session-empty{padding:48px 24px;text-align:center;color:var(--muted)}.student-session-empty b{display:block;color:#fff;font-size:17px;margin-bottom:7px}.student-session-foot{padding:13px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:9px;text-align:center}
+    body.student-focus .sidebar,body.student-focus .topbar{display:none}body.student-focus .app{display:block}body.student-focus .main{padding:18px}body.student-focus .view{display:none!important}body.student-focus #vista-estudiante{display:block!important}body.student-focus .student-session-sheet{margin-top:0}body.student-focus .student-view-toolbar{padding:0;border:0;background:transparent;box-shadow:none}body.student-focus .student-view-toolbar .card-head,body.student-focus .student-view-toolbar .field,body.student-focus .student-view-toolbar .notice,body.student-focus #student-print{display:none}body.student-focus .student-view-toolbar .form-grid{display:block}body.student-focus .student-view-toolbar .actions{justify-content:flex-end;margin:0 0 12px}
     .notice{border-left:4px solid var(--yellow);background:rgba(243,200,63,.07);padding:13px 15px;border-radius:9px;color:#d9d2b0;font-size:10px;line-height:1.5;margin-top:14px}
     .toast{position:fixed;right:22px;bottom:22px;z-index:99;background:#f5f7fa;color:#111722;padding:12px 16px;border-radius:11px;font-size:11px;font-weight:800;box-shadow:var(--shadow);opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:none}
     .mobile-title{display:none}
     @media(max-width:1100px){.grid-4{grid-template-columns:repeat(2,1fr)}.form-grid{grid-template-columns:repeat(2,1fr)}.profile-head{grid-template-columns:1fr}.best-grid{grid-template-columns:repeat(3,1fr)}}
     @media(max-width:760px){
       .app{display:block}.sidebar{position:sticky;height:auto;padding:12px;border-right:0;border-bottom:1px solid var(--line)}.brand{padding:0 4px 10px}.brand-logo{max-width:190px}.nav{display:flex;overflow:auto;padding-bottom:4px}.nav-btn{min-width:max-content;width:auto;padding:9px 11px}.nav-dot{display:none}.side-note{display:none}
-      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}
+      .session-block-head{grid-template-columns:1fr}.session-block-actions{justify-content:flex-start}.session-block-config{grid-template-columns:1fr 1fr}.session-block-config .field:nth-child(2){grid-column:span 2}.session-row{grid-template-columns:1fr 1fr}.session-row .field:first-child,.load-box{grid-column:span 2}.plate-helper{grid-column:1/-1}.plate-diagram{min-height:138px;padding:12px 22px}.plate-side-one{min-height:116px}.plate-disc{width:42px;flex-basis:42px}.plate-helper-head b{font-size:17px}.session-objective{grid-column:span 1}.template-grid{grid-template-columns:1fr}.library-tools{grid-template-columns:1fr}.student-session-brand{display:block}.student-session-logo{display:none}.student-session-stats{grid-template-columns:1fr 1fr}.student-view-block-head{grid-template-columns:1fr}.student-block-meta{text-align:left}.student-exercise-metrics{grid-template-columns:repeat(3,1fr)}.student-exercise-progress{grid-template-columns:1fr}.student-session-body{padding:11px}.student-view-block{padding:12px}
       .main{padding:22px 14px 40px}.topbar{margin-bottom:18px}.plate-line{display:none}.topbar h2{font-size:25px}.grid-4,.grid-2,.form-grid,.best-grid,.anthro-grid{grid-template-columns:1fr}.field.wide{grid-column:span 1}.hero-panel{grid-template-columns:1fr}.total-disc{justify-self:start;width:96px;height:96px}.profile-head{grid-template-columns:1fr}.card-head{align-items:flex-start;flex-direction:column}.section-card{padding:16px}
+    }
+    @media print{
+      *{-webkit-print-color-adjust:exact;print-color-adjust:exact}body{background:#fff}.sidebar,.topbar,.student-view-toolbar,.toast{display:none!important}.app{display:block}.main{padding:0}.view{display:none!important}#vista-estudiante{display:block!important}.student-session-sheet{max-width:none;margin:0;border:0;box-shadow:none}.student-view-block,.student-view-exercise,.plate-helper{break-inside:avoid}.student-exercise-progress{display:none}
     }
   </style>
 </head>
@@ -142,6 +164,7 @@
       <button class="nav-btn" data-view="matriz-rm"><i class="nav-dot"></i>Matriz RM</button>
       <button class="nav-btn" data-view="ficha-rm"><i class="nav-dot"></i>Ficha de fuerza</button>
       <button class="nav-btn" data-view="sesion"><i class="nav-dot"></i>Sesión de entrenamiento</button>
+      <button class="nav-btn" data-view="vista-estudiante"><i class="nav-dot"></i>Vista del estudiante</button>
       <button class="nav-btn" data-view="antropometria"><i class="nav-dot"></i>Antropometría</button>
       <button class="nav-btn" data-view="ficha-antropometrica"><i class="nav-dot"></i>Ficha antropométrica</button>
       <button class="nav-btn" data-view="estudiantes"><i class="nav-dot"></i>Estudiantes y respaldo</button>
@@ -236,6 +259,19 @@
         <div class="card-head"><div><h3>Sesiones guardadas</h3><p>Historial de planificaciones por estudiante.</p></div></div>
         <div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Estudiante</th><th>Objetivo</th><th>Ejercicios</th><th>Volumen estimado</th><th></th></tr></thead><tbody id="session-history-body"></tbody></table></div>
       </article>
+    </section>
+
+    <section id="vista-estudiante" class="view">
+      <article class="card section-card student-view-toolbar">
+        <div class="card-head"><div><h3>Vista del estudiante</h3><p>Presentación simplificada de la sesión y registro de la ejecución real.</p></div><span class="tag tag-blue">Solo entrenamiento</span></div>
+        <div class="form-grid">
+          <div class="field"><label for="student-view-student">Estudiante</label><select id="student-view-student"></select></div>
+          <div class="field wide"><label for="student-view-session">Sesión asignada</label><select id="student-view-session"></select></div>
+          <div class="actions" style="margin-top:18px"><button class="btn btn-blue" id="student-focus" type="button">Modo enfoque</button><button class="btn btn-ghost" id="student-print" type="button">Imprimir / guardar PDF</button></div>
+        </div>
+        <div class="notice">Esta vista oculta los registros de RM y antropometría, pero no funciona como una cuenta privada. El avance se guarda en este mismo dispositivo.</div>
+      </article>
+      <div id="student-session-view"></div>
     </section>
 
     <section id="antropometria" class="view">
@@ -338,7 +374,7 @@
   var sessionDraft=[];
   var PAGE_TITLES = {
     "inicio":"Panel general","registros-rm":"Registros de fuerza máxima","matriz-rm":"Matriz general de RM","ficha-rm":"Ficha individual de fuerza",
-    "sesion":"Sesión de entrenamiento","antropometria":"Registro antropométrico","ficha-antropometrica":"Ficha antropométrica individual","estudiantes":"Estudiantes y respaldo"
+    "sesion":"Sesión de entrenamiento","vista-estudiante":"Vista del estudiante","antropometria":"Registro antropométrico","ficha-antropometrica":"Ficha antropométrica individual","estudiantes":"Estudiantes y respaldo"
   };
   function initialState(){
     return {
@@ -346,13 +382,13 @@
         {id:"s1",name:"Estudiante 01",course:""},{id:"s2",name:"Estudiante 02",course:""},
         {id:"s3",name:"Estudiante 03",course:""},{id:"s4",name:"Estudiante 04",course:""},{id:"s5",name:"Estudiante 05",course:""}
       ],
-      rmRecords:[],anthroRecords:[],sessions:[],sessionTemplates:[],settings:{epleyDivisor:30}
+      rmRecords:[],anthroRecords:[],sessions:[],sessionTemplates:[],sessionProgress:{},settings:{epleyDivisor:30}
     };
   }
   function loadState(){
     try{
       var parsed=JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if(parsed && Array.isArray(parsed.students) && Array.isArray(parsed.rmRecords) && Array.isArray(parsed.anthroRecords)){if(!Array.isArray(parsed.sessions))parsed.sessions=[];if(!Array.isArray(parsed.sessionTemplates))parsed.sessionTemplates=[];return parsed;}
+      if(parsed && Array.isArray(parsed.students) && Array.isArray(parsed.rmRecords) && Array.isArray(parsed.anthroRecords)){if(!Array.isArray(parsed.sessions))parsed.sessions=[];if(!Array.isArray(parsed.sessionTemplates))parsed.sessionTemplates=[];if(!parsed.sessionProgress||typeof parsed.sessionProgress!=="object")parsed.sessionProgress={};return parsed;}
     }catch(e){}
     return initialState();
   }
@@ -375,7 +411,7 @@
     if(Array.prototype.some.call(el.options,function(o){return o.value===current;}))el.value=current;
   }
   function refreshSelects(){
-    ["rm-student","profile-student","session-student","a-student","anthro-profile-student"].forEach(function(key){
+    ["rm-student","profile-student","session-student","student-view-student","a-student","anthro-profile-student"].forEach(function(key){
       fillSelect(byId(key),state.students,function(s){return '<option value="'+esc(s.id)+'">'+esc(s.name)+'</option>';});
     });
     fillSelect(byId("rm-exercise"),EXERCISES,function(e){return '<option value="'+e.key+'">'+e.name+'</option>';});
@@ -545,6 +581,36 @@
       return '<tr><td>'+dateLabel(s.date)+'</td><td><strong>'+esc(studentName(s.studentId))+'</strong></td><td>'+esc(s.objective||"—")+'</td><td><div class="session-summary">'+detail+'</div></td><td><span class="tag tag-green">'+n(volume,0)+' kg</span></td><td><button class="small-btn" data-delete-session="'+s.id+'">Eliminar</button></td></tr>';
     }).join(""):'<tr><td colspan="6"><div class="empty">Todavía no hay sesiones guardadas.</div></td></tr>';
   }
+  function sessionItemKey(blockIndex,itemIndex,item){return item.id||("b"+blockIndex+"_e"+itemIndex+"_"+item.exercise);}
+  function rpeOptions(selected){
+    var out='<option value="">Sin registrar</option>';for(var i=1;i<=10;i++)out+='<option value="'+i+'"'+(Number(selected)===i?' selected':'')+'>'+i+'</option>';return out;
+  }
+  function renderStudentView(){
+    var studentSelect=byId("student-view-student"),sessionSelect=byId("student-view-session"),view=byId("student-session-view");
+    if(!state.students.length){sessionSelect.innerHTML="";sessionSelect.disabled=true;view.innerHTML='<div class="student-session-sheet"><div class="student-session-empty"><b>No hay estudiantes registrados.</b>Agrega estudiantes y crea una sesión para utilizar esta vista.</div></div>';return;}
+    var sid=studentSelect.value;if(!state.students.some(function(s){return s.id===sid;})){sid=state.students[0].id;studentSelect.value=sid;}
+    var sessions=latestByDate((state.sessions||[]).filter(function(session){return session.studentId===sid;}));
+    var currentSession=sessionSelect.value;
+    sessionSelect.innerHTML=sessions.map(function(session,index){return '<option value="'+esc(session.id)+'">'+dateLabel(session.date)+' · '+esc(session.objective||("Sesión "+(sessions.length-index)))+'</option>';}).join("");
+    sessionSelect.disabled=!sessions.length;
+    if(!sessions.length){view.innerHTML='<div class="student-session-sheet"><div class="student-session-empty"><b>No hay sesiones asignadas.</b>Crea y guarda una sesión para '+esc(studentName(sid))+'.</div></div>';return;}
+    if(!sessions.some(function(session){return session.id===currentSession;}))currentSession=sessions[0].id;
+    sessionSelect.value=currentSession;
+    var selected=sessions.find(function(session){return session.id===currentSession;})||sessions[0],blocks=sessionBlocks(selected);
+    if(!state.sessionProgress||typeof state.sessionProgress!=="object")state.sessionProgress={};
+    var progress=state.sessionProgress[selected.id]||{},totalItems=blocks.reduce(function(sum,block){return sum+(block.items||[]).length;},0),doneItems=0;
+    blocks.forEach(function(block,blockIndex){(block.items||[]).forEach(function(item,itemIndex){var itemProgress=progress[sessionItemKey(blockIndex,itemIndex,item)]||{};if(itemProgress.done)doneItems++;});});
+    var progressPct=totalItems?Math.round(doneItems/totalItems*100):0;
+    var blocksHtml=blocks.map(function(block,blockIndex){
+      var color=validBlockColor(block.color),rounds=Number(block.rounds)||1,roundRest=block.roundRest==null?120:Number(block.roundRest);
+      var exercises=(block.items||[]).map(function(item,itemIndex){
+        var key=sessionItemKey(blockIndex,itemIndex,item),itemProgress=progress[key]||{},bar=Number(item.bar)===12?12:20,target=Number(item.load)||0,plan=platePlan(target,bar),mounted=item.plateLoad==null?(plan.possible?plan.total:0):Number(item.plateLoad);
+        return '<article class="student-view-exercise'+(itemProgress.done?' completed':'')+'" style="--block-color:var(--'+color+')"><div class="student-exercise-head"><h5><span class="student-exercise-number">'+(itemIndex+1)+'</span>'+esc(exerciseName(item.exercise))+'</h5><label class="student-check"><input type="checkbox" data-progress-field="done" data-progress-session="'+esc(selected.id)+'" data-progress-key="'+esc(key)+'"'+(itemProgress.done?' checked':'')+'> Completado</label></div><div class="student-exercise-metrics"><div class="student-exercise-metric"><span>Porcentaje</span><b>'+n(item.percent,0)+'%</b></div><div class="student-exercise-metric"><span>Carga objetivo</span><b>'+n(target,1)+' kg</b></div><div class="student-exercise-metric"><span>Carga montable</span><b>'+(mounted?n(mounted,1)+' kg':'—')+'</b></div><div class="student-exercise-metric"><span>Barra</span><b>'+bar+' kg</b></div><div class="student-exercise-metric"><span>Trabajo</span><b>'+n(item.series,0)+' × '+n(item.reps,0)+'</b></div><div class="student-exercise-metric"><span>Descanso</span><b>'+formatRest(item.rest)+'</b></div></div>'+renderPlateHelper(target,bar)+'<div class="student-exercise-progress"><div class="field"><label>Carga realizada (kg)</label><input type="number" min="0" step="0.5" data-progress-field="actualLoad" data-progress-session="'+esc(selected.id)+'" data-progress-key="'+esc(key)+'" value="'+esc(itemProgress.actualLoad==null?'':itemProgress.actualLoad)+'" placeholder="Ej. '+(mounted?n(mounted,1):'')+'"></div><div class="field"><label>RPE percibido</label><select data-progress-field="rpe" data-progress-session="'+esc(selected.id)+'" data-progress-key="'+esc(key)+'">'+rpeOptions(itemProgress.rpe)+'</select></div><div class="field"><label>Observación</label><input maxlength="120" data-progress-field="notes" data-progress-session="'+esc(selected.id)+'" data-progress-key="'+esc(key)+'" value="'+esc(itemProgress.notes||'')+'" placeholder="Técnica, molestias o ajustes..."></div></div></article>';
+      }).join("");
+      return '<section class="student-view-block" style="--block-color:var(--'+color+')"><div class="student-view-block-head"><div><div class="student-block-order">Bloque '+(blockIndex+1)+' · '+esc(block.type||"Entrenamiento")+'</div><h4>'+esc(block.name||("Bloque "+(blockIndex+1)))+'</h4><p>'+esc(block.objective||"Sigue las indicaciones y prioriza una ejecución técnica segura.")+'</p></div><div class="student-block-meta">'+rounds+' ronda'+(rounds===1?'':'s')+'<br>Descanso '+formatRest(roundRest)+'</div></div><div class="student-view-exercises">'+(exercises||'<div class="empty">Sin ejercicios.</div>')+'</div></section>';
+    }).join("");
+    view.innerHTML='<article class="student-session-sheet"><header class="student-session-hero"><div class="student-session-brand"><div><div class="eyebrow">Sesión de entrenamiento</div><h3>'+esc(studentName(sid))+'</h3><p>'+esc(selected.objective||"Sesión planificada por el profesor.")+'</p></div><img class="student-session-logo" src="assets/logo-cbfn-powerlifting.png" alt="Colegio Bicentenario Felmer Niklitschek"></div><div class="student-session-stats"><div class="student-session-stat"><span>Fecha</span><b>'+dateLabel(selected.date)+'</b></div><div class="student-session-stat"><span>Bloques</span><b>'+blocks.length+'</b></div><div class="student-session-stat"><span>Ejercicios</span><b>'+totalItems+'</b></div><div class="student-session-stat"><span>Completados</span><b>'+doneItems+' de '+totalItems+'</b></div></div><div class="student-progress-track" title="'+progressPct+'% completado"><i style="--progress:'+progressPct+'%"></i></div></header><div class="student-session-body">'+blocksHtml+'</div><footer class="student-session-foot">Las cargas y repeticiones son orientativas. Informa al profesor si aparece dolor o si necesitas modificar la sesión.</footer></article>';
+  }
   function renderAnthro(){
     var rows=latestByDate(state.anthroRecords);
     byId("anthro-body").innerHTML=rows.length?rows.map(function(r){
@@ -568,11 +634,11 @@
   }
   function renderStudents(){
     byId("student-list").innerHTML=state.students.length?state.students.map(function(s){
-      var count=state.rmRecords.filter(function(r){return r.studentId===s.id;}).length+state.anthroRecords.filter(function(r){return r.studentId===s.id;}).length;
+      var count=state.rmRecords.filter(function(r){return r.studentId===s.id;}).length+state.anthroRecords.filter(function(r){return r.studentId===s.id;}).length+(state.sessions||[]).filter(function(r){return r.studentId===s.id;}).length;
       return '<div class="student-row"><div><div class="student-name">'+esc(s.name)+'</div><div class="student-meta">'+esc(s.course||"Sin curso")+' · '+count+' registros</div></div><button class="small-btn" data-delete-student="'+s.id+'">Eliminar</button></div>';
     }).join(""):'<div class="empty">No hay estudiantes.</div>';
   }
-  function renderAll(){refreshSelects();renderDashboard();renderRM();renderMatrix();renderProfile();renderSessionLibrary();renderSession();renderAnthro();renderAnthroProfile();renderStudents();}
+  function renderAll(){refreshSelects();renderDashboard();renderRM();renderMatrix();renderProfile();renderSessionLibrary();renderSession();renderStudentView();renderAnthro();renderAnthroProfile();renderStudents();}
 
   byId("rm-form").addEventListener("submit",function(e){
     e.preventDefault();if(!state.students.length){toast("Primero agrega un estudiante.");return;}
@@ -637,7 +703,7 @@
     var missing=sessionDraft.some(function(block){return block.items.some(function(row){return !bestRM(sid,row.exercise);});});
     if(missing){toast("Uno de los ejercicios no tiene un RM registrado.");return;}
     var blocks=sessionDraft.map(function(block,index){
-      var items=block.items.map(function(row){var rm=bestRM(sid,row.exercise),load=Math.round(rm*row.percent/100*2)/2,bar=Number(row.bar)===12?12:20,plan=platePlan(load,bar);return {exercise:row.exercise,percent:row.percent,rm:rm,load:load,plateLoad:plan.possible?plan.total:null,bar:bar,plates:plan.possible?plan.plates:[],reps:row.reps,series:row.series,rest:row.rest};});
+      var items=block.items.map(function(row){var rm=bestRM(sid,row.exercise),load=Math.round(rm*row.percent/100*2)/2,bar=Number(row.bar)===12?12:20,plan=platePlan(load,bar);return {id:row.id,exercise:row.exercise,percent:row.percent,rm:rm,load:load,plateLoad:plan.possible?plan.total:null,bar:bar,plates:plan.possible?plan.plates:[],reps:row.reps,series:row.series,rest:row.rest};});
       return {name:block.name.trim()||("Bloque "+String.fromCharCode(65+index)),type:block.type,objective:block.objective.trim(),rounds:Number(block.rounds)||1,roundRest:Number(block.roundRest)||0,color:validBlockColor(block.color),items:items};
     });
     var items=blocks.reduce(function(list,block){return list.concat(block.items);},[]);
@@ -657,6 +723,24 @@
     var deleteId=e.target.dataset.templateDelete;
     if(deleteId&&confirm("¿Eliminar esta plantilla personalizada?")){state.sessionTemplates=state.sessionTemplates.filter(function(t){return t.id!==deleteId;});save();renderSessionLibrary();toast("Plantilla eliminada.");}
   });
+  byId("student-view-student").addEventListener("change",function(){byId("student-view-session").value="";renderStudentView();});
+  byId("student-view-session").addEventListener("change",renderStudentView);
+  byId("student-session-view").addEventListener("change",function(e){
+    var field=e.target.dataset.progressField,sessionId=e.target.dataset.progressSession,key=e.target.dataset.progressKey;if(!field||!sessionId||!key)return;
+    if(!state.sessionProgress||typeof state.sessionProgress!=="object")state.sessionProgress={};
+    if(!state.sessionProgress[sessionId])state.sessionProgress[sessionId]={};
+    if(!state.sessionProgress[sessionId][key])state.sessionProgress[sessionId][key]={};
+    var entry=state.sessionProgress[sessionId][key];
+    if(field==="done")entry.done=e.target.checked;
+    else if(field==="actualLoad")entry.actualLoad=e.target.value===""?"":Number(e.target.value);
+    else if(field==="rpe")entry.rpe=e.target.value===""?"":Number(e.target.value);
+    else entry[field]=e.target.value;
+    save();if(field==="done")renderStudentView();else toast("Avance guardado.");
+  });
+  byId("student-focus").addEventListener("click",function(){
+    document.body.classList.toggle("student-focus");this.textContent=document.body.classList.contains("student-focus")?"Salir del modo enfoque":"Modo enfoque";
+  });
+  byId("student-print").addEventListener("click",function(){window.print();});
   byId("anthro-form").addEventListener("submit",function(e){
     e.preventDefault();if(!state.students.length){toast("Primero agrega un estudiante.");return;}
     var weight=Number(byId("a-weight").value),height=Number(byId("a-height").value),fat=Number(byId("a-fat").value)||0,basal=Number(byId("a-basal").value)||0;
@@ -672,9 +756,9 @@
     var target=e.target;
     if(target.dataset.deleteRm){if(confirm("¿Eliminar este registro de RM?")){state.rmRecords=state.rmRecords.filter(function(r){return r.id!==target.dataset.deleteRm;});save();renderAll();toast("Registro eliminado.");}}
     if(target.dataset.deleteAnthro){if(confirm("¿Eliminar esta medición?")){state.anthroRecords=state.anthroRecords.filter(function(r){return r.id!==target.dataset.deleteAnthro;});save();renderAll();toast("Medición eliminada.");}}
-    if(target.dataset.deleteSession){if(confirm("¿Eliminar esta sesión de entrenamiento?")){state.sessions=state.sessions.filter(function(s){return s.id!==target.dataset.deleteSession;});save();renderAll();toast("Sesión eliminada.");}}
+    if(target.dataset.deleteSession){if(confirm("¿Eliminar esta sesión de entrenamiento?")){var deletedSessionId=target.dataset.deleteSession;state.sessions=state.sessions.filter(function(s){return s.id!==deletedSessionId;});if(state.sessionProgress)delete state.sessionProgress[deletedSessionId];save();renderAll();toast("Sesión eliminada.");}}
     if(target.dataset.deleteStudent){
-      var sid=target.dataset.deleteStudent;var used=state.rmRecords.some(function(r){return r.studentId===sid;})||state.anthroRecords.some(function(r){return r.studentId===sid;});
+      var sid=target.dataset.deleteStudent;var used=state.rmRecords.some(function(r){return r.studentId===sid;})||state.anthroRecords.some(function(r){return r.studentId===sid;})||(state.sessions||[]).some(function(r){return r.studentId===sid;});
       if(used){toast("El estudiante tiene registros; elimínalos antes.");return;}
       if(confirm("¿Eliminar este estudiante?")){state.students=state.students.filter(function(s){return s.id!==sid;});save();renderAll();toast("Estudiante eliminado.");}
     }
@@ -695,7 +779,7 @@
   byId("export-json").addEventListener("click",function(){download("Respaldo_Powerlifting_"+today()+".json",JSON.stringify(state,null,2),"application/json");toast("Respaldo descargado.");});
   byId("import-json").addEventListener("change",function(e){
     var file=e.target.files[0];if(!file)return;var reader=new FileReader();
-    reader.onload=function(){try{var data=JSON.parse(reader.result);if(!Array.isArray(data.students)||!Array.isArray(data.rmRecords)||!Array.isArray(data.anthroRecords))throw new Error("Formato inválido");if(!Array.isArray(data.sessions))data.sessions=[];if(!Array.isArray(data.sessionTemplates))data.sessionTemplates=[];if(confirm("El respaldo reemplazará los datos actuales. ¿Continuar?")){state=data;save();renderAll();toast("Respaldo importado.");}}catch(err){toast("No fue posible leer el respaldo.");}e.target.value="";};reader.readAsText(file);
+    reader.onload=function(){try{var data=JSON.parse(reader.result);if(!Array.isArray(data.students)||!Array.isArray(data.rmRecords)||!Array.isArray(data.anthroRecords))throw new Error("Formato inválido");if(!Array.isArray(data.sessions))data.sessions=[];if(!Array.isArray(data.sessionTemplates))data.sessionTemplates=[];if(!data.sessionProgress||typeof data.sessionProgress!=="object")data.sessionProgress={};if(confirm("El respaldo reemplazará los datos actuales. ¿Continuar?")){state=data;save();renderAll();toast("Respaldo importado.");}}catch(err){toast("No fue posible leer el respaldo.");}e.target.value="";};reader.readAsText(file);
   });
   byId("reset-data").addEventListener("click",function(){if(confirm("¿Restablecer todos los datos? Esta acción no se puede deshacer sin un respaldo.")){state=initialState();save();renderAll();toast("Datos restablecidos.");}});
   byId("rm-type").addEventListener("change",function(){if(this.value==="direct")byId("rm-reps").value=1;});
